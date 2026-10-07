@@ -1,0 +1,60 @@
+.kg { color: #1c1917; font-family: "Be Vietnam Pro", system-ui, sans-serif; background: #fff; }
+.kg h1, .kg h2, .kg-brand { font-family: "Playfair Display", Georgia, serif; font-weight: 600; color: #161616; letter-spacing: -0.02em; }
+.kg h1 { font-size: 64px; line-height: 1.05; margin: 0; }
+.kg h2 { font-size: 40px; line-height: 1.2; margin: 0 0 14px; }
+.kg-narrow { max-width: 820px; text-align: center; }
+.kg-hero { background: #f6f1e7; padding: 72px 0 36px; }
+.kg-kicker { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 0 18px; color: #8c6c34; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.kg-kicker span { width: 22px; height: 1px; background: #c4a36a; }
+.kg-brand { margin: 6px 0 18px; color: #b08d4f; font-size: 42px; font-style: italic; line-height: 1.15; }
+.kg-lead { margin: 0 auto 22px; max-width: 560px; color: #5c564e; font-size: 16px; line-height: 1.7; }
+.kg-chip { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 22px; padding: 8px 14px; border-radius: 999px; background: #fff; border: 1px solid #eadfce; color: #8c6c34; font-size: 13px; }
+.kg-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+.kg-actions-center { margin-top: 8px; }
+.kg a.kg-btn { display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 22px; border-radius: 999px; font-size: 15px; font-weight: 600; text-decoration: none; }
+.kg a.kg-btn-gold { background: #b08d4f; color: #fff; }
+.kg a.kg-btn-gold:hover { background: #9a7840; color: #fff; }
+.kg a.kg-btn-line { background: #fff; color: #1c1917; border: 1px solid #ddd4c6; }
+.kg a.kg-btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.45); }
+.kg a.kg-btn-ghost:hover { color: #fff; border-color: #fff; }
+.kg-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 48px 0 0; padding: 22px 0 0; border-top: 1px solid #e6dccb; list-style: none; text-align: left; }
+.kg-points li { padding: 0 22px; border-left: 1px solid #e6dccb; }
+.kg-points li:first-child { border-left: 0; padding-left: 0; }
+.kg-points b, .kg-steps b, .kg-why b { display: block; margin-bottom: 4px; font-size: 15px; color: #161616; }
+.kg-points span, .kg-steps p, .kg-why p { margin: 0; color: #6f6860; font-size: 14px; line-height: 1.6; }
+.kg-why { background: #fff; padding: 78px 0; }
+.kg-split { display: grid; grid-template-columns: .85fr 1.15fr; gap: 64px; align-items: start; }
+.kg-why ol, .kg-steps ol { list-style: none; margin: 0; padding: 0; }
+.kg-why li { display: grid; grid-template-columns: 42px 1fr; gap: 14px; padding: 16px 0; border-bottom: 1px solid #efe8dc; }
+.kg-why li span { color: #c4a36a; font-size: 18px; font-weight: 600; }
+.kg-steps { background: #f6f1e7; padding: 78px 0; text-align: center; }
+.kg-sub { margin: 0 0 36px; color: #6f6860; }
+.kg-steps ol { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; text-align: left; position: relative; }
+.kg-steps ol::before { content: ""; position: absolute; left: 8%; right: 8%; top: 21px; height: 1px; background: #e0d3bf; }
+.kg-steps li { position: relative; }
+.kg-steps li > span { display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; margin-bottom: 16px; border-radius: 50%; border: 1px solid #c4a36a; background: #f6f1e7; color: #8c6c34; font-size: 13px; font-weight: 700; position: relative; z-index: 1; }
+.kg-list { padding: 78px 0 64px; text-align: center; }
+.kg-tag { display: inline-flex; margin: 8px 0 18px; padding: 6px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.kg-tag-sale { background: #f3ead8; color: #8c6c34; }
+.kg-tag-rent { background: #e7f3ec; color: #1f7a4d; }
+.kg-list .bvl-grid-sec { padding: 8px 0 20px; }
+.kg-list .bvl-grid-inner { max-width: none; }
+.kg-list .bvl-card-grid { text-align: left; }
+.kg-empty, .kg-note { color: #6f6860; font-size: 14px; }
+.kg-note { margin: 8px 0 18px; }
+.kg-cta { background: #1c1914; color: #f6f1e7; text-align: center; padding: 78px 0; }
+.kg-cta h2 { color: #fff; }
+.kg-cta > .bvh-wrap > p { margin: 0 auto 22px; max-width: 520px; color: #d9d0c2; }
+.kg-cta-meta, .kg-cta-hours { margin: 18px 0 0; color: #b7ad9f; font-size: 13px; }
+.kg-cta-hours { margin-top: 6px; }
+@media (max-width: 900px) {
+  .kg h1 { font-size: 42px; }
+  .kg h2 { font-size: 32px; }
+  .kg-brand { font-size: 30px; }
+  .kg-split, .kg-steps ol, .kg-points { grid-template-columns: 1fr; }
+  .kg-steps ol::before { display: none; }
+  .kg-points li { border-left: 0; padding: 14px 0; border-top: 1px solid #e6dccb; }
+  .kg-points li:first-child { border-top: 0; }
+  .kg-hero, .kg-why, .kg-steps, .kg-list, .kg-cta { padding-left: 0; padding-right: 0; }
+  .kg-why, .kg-steps, .kg-list { padding-top: 48px; padding-bottom: 48px; }
+}

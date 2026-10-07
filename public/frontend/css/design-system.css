@@ -1,0 +1,463 @@
+/*
+ * BestVinhomes Listings — Design System
+ * Port từ: File thiết kế mẫu/Listing post/listing/assets/base.css
+ *
+ * Fonts: load qua wp_enqueue_style('bvl-fonts') — không @import ở đây.
+ * Tất cả class name có prefix .bvl- để tránh conflict với Houzez / Elementor.
+ * Box-sizing reset chỉ áp trong .bvl-wrap (không overide toàn site).
+ *
+ * Version: 1.0.3
+ */
+
+/* ═══════════════════════════════════════════════
+   CSS CUSTOM PROPERTIES
+   Prefix --bvl- để không đụng biến của theme.
+═══════════════════════════════════════════════ */
+:root {
+  /* surfaces — kem */
+  --bvl-paper:        #f7f3ec;
+  --bvl-paper-card:   #fdfbf6;
+  --bvl-paper-deep:   #efe9dd;
+
+  /* ink */
+  --bvl-ink:          #211d17;
+  --bvl-ink-soft:     #6f665a;
+  --bvl-ink-faint:    #a39a8c;
+
+  /* rules */
+  --bvl-line:         rgba(33,29,23,.13);
+  --bvl-line-soft:    rgba(33,29,23,.07);
+
+  /* accent — vàng đồng champagne */
+  --bvl-gold:         #b08d4f;
+  --bvl-gold-deep:    #8c6c34;
+  --bvl-gold-tint:    rgba(176,141,79,.12);
+  --bvl-gold-line:    rgba(176,141,79,.34);
+
+  /* fonts */
+  --bvl-serif: 'Be Vietnam Pro', system-ui, sans-serif;
+  --bvl-sans:  'Be Vietnam Pro', system-ui, sans-serif;
+
+  --bvl-maxw: 1180px;
+}
+
+/* ═══════════════════════════════════════════════
+   SCOPED RESET — chỉ áp trong wrapper plugin
+═══════════════════════════════════════════════ */
+.bvl-wrap *,
+.bvl-wrap *::before,
+.bvl-wrap *::after { box-sizing: border-box; }
+
+.bvl-wrap {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  color: var(--bvl-ink);
+  font-family: var(--bvl-sans);
+  font-size: 16px;       /* E: reset cỡ chữ cơ bản, tránh kế thừa lạ từ theme */
+  font-weight: 400;
+  line-height: 1.6;
+}
+.bvl-wrap img { display: block; max-width: 100%; }
+.bvl-wrap a:not(.bvl-btn) { color: inherit; }
+
+/* ═══════════════════════════════════════════════
+   TYPOGRAPHIC ATOMS
+═══════════════════════════════════════════════ */
+
+/* eyebrow — "BÁN 2PN · VINHOMES..." */
+.bvl-eyebrow {
+  font-family: var(--bvl-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--bvl-gold-deep);
+  display: inline-flex;
+  align-items: center;
+  gap: .7em;
+}
+.bvl-eyebrow::before {
+  content: "";
+  width: 26px; height: 1px;
+  background: var(--bvl-gold);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* display — tiêu đề lớn, serif */
+.bvl-display {
+  font-family: var(--bvl-serif);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -.005em;
+  text-wrap: balance;
+}
+
+/* lede — italic mô tả ngắn */
+.bvl-lede {
+  font-family: var(--bvl-serif);
+  font-style: italic;
+  color: var(--bvl-ink-soft);
+}
+
+/* kicker rule — đường kẻ vàng */
+.bvl-kicker-rule {
+  width: 54px; height: 2px;
+  background: var(--bvl-gold);
+  border: 0; margin: 0;
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════
+   PRICE TOKEN
+═══════════════════════════════════════════════ */
+.bvl-price-num {
+  font-family: var(--bvl-serif);
+  font-weight: 600;
+  letter-spacing: -.01em;
+  line-height: 1;
+}
+
+/* ═══════════════════════════════════════════════
+   SPECS ROW (PN / WC / m²)
+═══════════════════════════════════════════════ */
+.bvl-specstrip {
+  display: flex;
+  flex-wrap: wrap;
+}
+.bvl-spec {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.bvl-spec .bvl-k {
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--bvl-ink-faint);
+  font-weight: 600;
+}
+.bvl-spec .bvl-v {
+  font-family: var(--bvl-serif);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* ═══════════════════════════════════════════════
+   INFO TABLE (grid 2 cột)
+   Không dùng overflow:hidden / box-shadow (bug Android Chrome)
+═══════════════════════════════════════════════ */
+.bvl-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 56px;
+  border-top: 1px solid var(--bvl-line);
+}
+.bvl-info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 15px 2px;
+  border-bottom: 1px solid var(--bvl-line);
+  align-items: baseline;
+}
+.bvl-info-row .bvl-label {
+  color: var(--bvl-ink-soft);
+  font-size: 15px;       /* B: Desktop.html .info-row .k = 15px */
+}
+.bvl-info-row .bvl-val {
+  font-weight: 500;
+  text-align: right;
+  font-size: 15px;
+}
+.bvl-info-row .bvl-val.bvl-gold { color: var(--bvl-gold-deep); }
+
+@media (max-width: 680px) {
+  .bvl-info-grid { grid-template-columns: 1fr; column-gap: 0; }
+}
+
+/* ═══════════════════════════════════════════════
+   HIGHLIGHT CHIPS
+═══════════════════════════════════════════════ */
+.bvl-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.bvl-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border: 1px solid var(--bvl-gold-line);
+  border-radius: 999px;
+  background: var(--bvl-gold-tint);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--bvl-gold-deep);
+}
+.bvl-chip .bvl-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--bvl-gold);
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════════ */
+.bvl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--bvl-sans);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 15px 26px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .25s ease, border-color .25s ease, color .25s ease;
+  white-space: nowrap;
+}
+.bvl-btn-gold              { background: var(--bvl-gold); color: #fff; }
+.bvl-btn-gold:hover        { background: var(--bvl-gold-deep); }
+.bvl-btn-ink               { background: var(--bvl-ink); color: var(--bvl-paper-card); }
+.bvl-btn-ink:hover         { background: #000; }
+.bvl-btn-ghost             { background: transparent; color: var(--bvl-ink); border-color: var(--bvl-line); }
+.bvl-btn-ghost:hover       { border-color: var(--bvl-ink); }
+
+/* Ép chữ nút TRẮNG ở mọi trạng thái — thắng a:hover { color: cam } của theme */
+.bvl-wrap .bvl-btn-gold,
+.bvl-wrap .bvl-btn-gold:hover,
+.bvl-wrap .bvl-btn-gold:active,
+.bvl-wrap .bvl-btn-gold:focus,
+.bvl-wrap .bvl-btn-gold:visited { color: #fff !important; }
+
+.bvl-wrap .bvl-btn-zalo,
+.bvl-wrap .bvl-btn-zalo:hover,
+.bvl-wrap .bvl-btn-zalo:active,
+.bvl-wrap .bvl-btn-zalo:focus,
+.bvl-wrap .bvl-btn-zalo:visited { color: #fff !important; }
+
+/* ═══════════════════════════════════════════════
+   LIGHTBOX
+   Class prefix: .bvl-lb (tránh conflict global .lb)
+═══════════════════════════════════════════════ */
+.bvl-lb {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(20,17,13,.94);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.bvl-lb.open { display: flex; opacity: 1; }
+
+.bvl-lb-stage {
+  position: relative;
+  width: 92vw;
+  height: 86vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bvl-lb-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  box-shadow: 0 40px 120px rgba(0,0,0,.6);
+  animation: bvl-lbpop .35s cubic-bezier(.2,.7,.2,1);
+}
+@keyframes bvl-lbpop {
+  from { opacity: 0; transform: scale(.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+.bvl-lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.28);
+  background: rgba(255,255,255,.05);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, border-color .2s;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+.bvl-lb-nav:hover  { background: rgba(255,255,255,.16); border-color: #fff; }
+.bvl-lb-prev       { left: 18px; }
+.bvl-lb-next       { right: 18px; }
+
+.bvl-lb-close {
+  position: absolute;
+  top: 22px; right: 26px;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.28);
+  background: transparent;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background .2s;
+  z-index: 2;
+}
+.bvl-lb-close:hover { background: rgba(255,255,255,.14); }
+
+.bvl-lb-count {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,.82);
+  font-size: 13px;
+  letter-spacing: .18em;
+  font-weight: 500;
+  font-family: var(--bvl-sans);
+  z-index: 2;
+}
+.bvl-lb-count b { color: #fff; font-weight: 600; }
+
+@media (max-width: 680px) {
+  .bvl-lb-nav { width: 44px; height: 44px; }
+  .bvl-lb-prev { left: 8px; }
+  .bvl-lb-next { right: 8px; }
+}
+
+/* ═══════════════════════════════════════════════
+   GALLERY THUMBNAIL AFFORDANCE
+   Dùng trong mosaic gallery (Bước 4)
+═══════════════════════════════════════════════ */
+.bvl-gal-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bvl-paper-deep);
+}
+.bvl-gal-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════
+   BODY — nền trang khi plugin active (việc 1)
+   body.bvl-sale-page được inject bởi class-bvl-single.php
+═══════════════════════════════════════════════ */
+body.bvl-sale-page {
+  background: var(--bvl-paper-card) !important; /* #fdfbf6 — trắng kem sáng (chốt: desktop + mobile) */
+}
+/* Reset nền wrapper Houzez nếu chúng đang lòi trắng */
+body.bvl-sale-page #page,
+body.bvl-sale-page #content,
+body.bvl-sale-page .site,
+body.bvl-sale-page .site-content,
+body.bvl-sale-page .houzez-main-wrap,
+body.bvl-sale-page #houzez-main-wrap {
+  background: transparent !important;
+}
+
+/* ═══════════════════════════════════════════════
+   THEME THUÊ (Long-Term VN) — emerald
+   body.bvl-rent-page inject bởi class-bvl-single.php.
+   Ghi đè CSS biến → accent gold→emerald, nền kem→xanh lá cực nhạt #fafdf7.
+   Dùng chung single.css với Bán.
+═══════════════════════════════════════════════ */
+body.bvl-rent-page {
+  --bvl-paper:        #fafdf7;
+  --bvl-paper-card:   #fafdf7;
+  --bvl-paper-deep:   #e6f1e5;
+
+  --bvl-gold:         #1b6b5a;
+  --bvl-gold-deep:    #145446;
+  --bvl-gold-tint:    rgba(27,107,90,.12);
+  --bvl-gold-line:    rgba(27,107,90,.34);
+
+  background: var(--bvl-paper) !important; /* #fafdf7 — xanh lá cực nhạt */
+}
+/* Reset nền wrapper Houzez nếu lòi trắng */
+body.bvl-rent-page #page,
+body.bvl-rent-page #content,
+body.bvl-rent-page .site,
+body.bvl-rent-page .site-content,
+body.bvl-rent-page .houzez-main-wrap,
+body.bvl-rent-page #houzez-main-wrap {
+  background: transparent !important;
+}
+
+/* ═══════════════════════════════════════════════
+   THEME THUÊ EN (Long-Term EN) — xanh lá #639922
+   body.bvl-lang-en thêm bởi class-bvl-single.php (chỉ rent post EN).
+   Giữ nguyên nền xanh nhạt của .bvl-rent-page, chỉ ĐÈ accent emerald → xanh lá.
+═══════════════════════════════════════════════ */
+body.bvl-rent-page.bvl-lang-en {
+  --bvl-gold:      #639922;
+  --bvl-gold-deep: #4D7A1A;
+  --bvl-gold-tint: rgba(99,153,34,.12);
+  --bvl-gold-line: rgba(99,153,34,.34);
+}
+
+/* ═══════════════════════════════════════════════
+   THEME THUÊ NGẮN HẠN EN (Short-Term EN) — xanh dương #378ADD
+   body.bvl-st-page + bvl-lang-en. Đè accent emerald/xanh-lá.
+   Nền xanh dương nhạt #F3F8FD (đè nền rent qua --bvl-paper + !important).
+═══════════════════════════════════════════════ */
+body.bvl-rent-page.bvl-st-page.bvl-lang-en {
+  --bvl-gold:      #378ADD;
+  --bvl-gold-deep: #2B6EB3;
+  --bvl-gold-tint: rgba(55,138,221,.12);
+  --bvl-gold-line: rgba(55,138,221,.34);
+}
+body.bvl-st-page {
+  --bvl-paper:      #F3F8FD;
+  --bvl-paper-card: #FFFFFF;
+  background: #F3F8FD !important;
+}
+body.bvl-st-page #page,
+body.bvl-st-page #content,
+body.bvl-st-page .site,
+body.bvl-st-page .site-content,
+body.bvl-st-page .houzez-main-wrap,
+body.bvl-st-page #houzez-main-wrap {
+  background: transparent !important;
+}
+/* Khung liên hệ ST: chìm vào nền xanh nhạt như Long-Term (giữ paper-card #FFF cho chip amenities) */
+body.bvl-st-page .bvl-card { background: var(--bvl-paper); }
+
+/* ═══════════════════════════════════════════════
+   THEME LUXURY (VN/EN) — champagne #B8962E + nền kem + CTA navy
+   body.bvl-luxury-page inject bởi class-bvl-single.php (post category luxury-*).
+   Dùng chung single-rent.php; KHÔNG có section ST. CTA navy cho sang.
+═══════════════════════════════════════════════ */
+body.bvl-luxury-page {
+  --bvl-paper:      #FBF8F2;   /* kem champagne cực nhạt */
+  --bvl-paper-card: #FFFFFF;   /* card trắng nổi trên nền kem — sang */
+
+  --bvl-gold:      #B8962E;
+  --bvl-gold-deep: #8A6D1F;
+  --bvl-gold-tint: rgba(184,150,46,.12);
+  --bvl-gold-line: rgba(184,150,46,.30);
+
+  background: #FBF8F2 !important;
+}
+/* Reset nền wrapper Houzez nếu lòi trắng/khác */
+body.bvl-luxury-page #page,
+body.bvl-luxury-page #content,
+body.bvl-luxury-page .site,
+body.bvl-luxury-page .site-content,
+body.bvl-luxury-page .houzez-main-wrap,
+body.bvl-luxury-page #houzez-main-wrap {
+  background: transparent !important;
+}
+/* CTA navy cho sang — nút nền navy đậm, hover champagne */
+body.bvl-luxury-page .bvl-btn-gold        { background: #1F2A44; }
+body.bvl-luxury-page .bvl-btn-gold:hover  { background: #B8962E; }

@@ -1,0 +1,933 @@
+{
+  "1-phong-ngu": {
+    "price_note": "Giá từ 6 – 8 tỷ · 36 – 56m²",
+    "badge": "24 căn",
+    "logs": [
+      {
+        "dow": "Thứ Năm",
+        "date": "24/09/2026",
+        "title": "Giỏ hàng 1PN Vinhomes Central Park – Thứ Năm 24/09/2026: Giá từ 6 tỷ",
+        "time": "07:00",
+        "groups": [
+          {
+            "name": "Khu Central",
+            "items": [
+              {
+                "label": "Central 1",
+                "text": "1PN (C1-03) Tầng trung cao – 7.8 Tỷ – View sông, View thoáng – Căn đẹp nhất của 1PN"
+              },
+              {
+                "label": "Central 2",
+                "text": "1PN – 7.1 Tỷ – Sổ hồng – Fullnt"
+              }
+            ]
+          },
+          {
+            "name": "Khu Landmark",
+            "items": [
+              {
+                "label": "Landmark 2",
+                "text": "1PN – 7.4 Tỷ – HĐMB – 54 m2 – Fullnt – View Pháo hoa – HĐT 18tr net"
+              },
+              {
+                "label": "Landmark 2",
+                "text": "1PN – 7.6 Tỷ – Sổ hồng – 54.4 m2 – Fullnt – View Landmark 81, sông, công viên – HĐT người nhà, giá thuê tham khảo 17 triệu/tháng, căn trục 12, view đẹp, thoáng, cực hiếm"
+              },
+              {
+                "label": "Landmark 4",
+                "text": "1PN – 6 Tỷ – Sổ hồng – 50.5 m2 – Fullnt – HĐT t12/2026, Có hỗ trợ vay"
+              },
+              {
+                "label": "Landmark 4",
+                "text": "1PN – 6.6 Tỷ – HĐMB – 50.5 m2 – Fullnt – HĐT Bnb1/12 giá 17tr net"
+              },
+              {
+                "label": "Landmark 6",
+                "text": "1PN – 6.9 Tỷ – Sổ hồng – 54 m2 – Fullnt – View sông, thành phố, trục diện sông – Không hỗ trợ vay, Giá bán nhanh, Giá tốt nhất thị trường"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "1PN – 8.2 Tỷ – Suất SPA – Sẵn HĐT, hàng rẻ nhất thị trường, phù hợp khách đầu tư"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "1PN – 8.4 Tỷ – Sổ hồng – 55 m2 – Fullnt – View quảng trường L81, hồ bơi, tòa Marina – Sẵn hợp đồng thuê 24tr/tháng tới 2028, nhà mới đẹp, tiện ích đẳng cấp, bể bơi phòng gym xịn sò, hỗ trợ vay"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "1PN – 8.7 Tỷ – Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "1PN – 6.8 Tỷ – Sổ hồng – 61 m2 – Fullnt"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "1PN (LP-03) – 7 Tỷ – Fullnt – View thành phố"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "1PN – 7.5 Tỷ – Sổ hồng – Fullnt – View bá cháy – Đang cho thuê 19.5 triệu/tháng, Tặng quà"
+              }
+            ]
+          },
+          {
+            "name": "Khu Park",
+            "items": [
+              {
+                "label": "Khu Park",
+                "text": "1PN – 6.9 Tỷ – Sở hữu lâu dài"
+              }
+            ]
+          },
+          {
+            "name": "Quỹ căn khác",
+            "items": [
+              {
+                "label": "Studio",
+                "text": "5.8 Tỷ – Sổ hồng – Fullnt – View Thành Phố – Còn TL"
+              },
+              {
+                "label": "1PN",
+                "text": "7.7 Tỷ – Sổ hồng – 54 m2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dow": "Thứ Tư",
+        "date": "23/09/2026",
+        "title": "Giỏ hàng 1PN Vinhomes Central Park – Thứ Tư 23/09/2026: Giá từ 6 tỷ",
+        "time": "07:00",
+        "groups": [
+          {
+            "name": "Khu Central",
+            "items": [
+              {
+                "label": "Central 2",
+                "text": "1PN – 7.1 Tỷ Sổ hồng – Fullnt"
+              }
+            ]
+          },
+          {
+            "name": "Khu Landmark",
+            "items": [
+              {
+                "label": "Landmark 1",
+                "text": "1PN – 8 Tỷ Sổ hồng – 54 m2 – Fullnt – Sẵn HĐ thuê, decor đẹp"
+              },
+              {
+                "label": "Landmark 2",
+                "text": "1PN – 7.4 Tỷ HĐMB – 54 m2 – Fullnt – View Pháo hoa – HDT 18tr net, hẹn trước 1 ngày"
+              },
+              {
+                "label": "Landmark 3",
+                "text": "1PN – 7.8 Tỷ Sổ hồng – 54 m2 – NTCB – Đang trống"
+              },
+              {
+                "label": "Landmark 4",
+                "text": "1PN – 6 Tỷ Sổ hồng – 50.5 m2 – Fullnt – hdt t12/2026, Có hỗ trợ vay"
+              },
+              {
+                "label": "Landmark 4",
+                "text": "1PN – 6.5 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Landmark 4",
+                "text": "1PN – 7.5 Tỷ Sổ hồng, Officetel – Fullnt"
+              },
+              {
+                "label": "Landmark 6",
+                "text": "1PN – 6.9 Tỷ Sổ hồng – 54 m2 – Fullnt – View trục diện sông, thành phố – Giá tốt nhất thị trường, Ko hỗ trợ vay, Giá bán nhanh"
+              },
+              {
+                "label": "Landmark 6",
+                "text": "1PN – 7 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Landmark 6",
+                "text": "1PN – 7.5 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "1PN – 8.2 Tỷ Suất SPA – 55 m2 – Sẵn HĐT, hàng rẻ nhất thị trường, phù hợp khách đầu tư, rẻ"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "1PN – 8.5 Tỷ Sổ hồng – 55 m2 – Fullnt – HĐT đến 11/2027, hỗ trợ vay"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "1PN – 8.7 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "1PN – 8.8 Tỷ Sổ hồng – Fullnt – View thành phố"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "1PN – 9.5 Tỷ"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "1PN – 9.7 Tỷ Sổ hồng, Officetel – Fullnt"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "1PN – 9.9 Tỷ Officetel – 55 m2 – Mua ở hay làm căn hộ văn phòng đều được"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "1PN – 12 Tỷ Sổ hồng – 55 m2 – View công viên – Layout đẹp, đúng công năng, ban công thoáng, nhà đẹp, giữ gìn tốt, hỗ trợ vay ngân hàng"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "1PN – 6.5 Tỷ Sổ hồng, Officetel – Fullnt"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "1PN (LP-11) – 6.8 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "1PN (LP-03) – 7 Tỷ – Fullnt – View thành phố"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "1PN – 7.2 Tỷ – 53 m2 – Fullnt – View Đông Nam"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "1PN – 7.3 Tỷ Sổ hồng, Officetel – Fullnt"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "1PN (LP-18) – 7.5 Tỷ Sổ hồng – Fullnt – View bá cháy – Đang cho thuê 19.5 triệu/tháng, đang có hđt, tặng quà"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "1PN 2x.19 – 7.9 Tỷ Sổ hồng – View pháo hoa, Bitexco – Sẵn hdt 19tr/tháng"
+              }
+            ]
+          },
+          {
+            "name": "Khu Park",
+            "items": [
+              {
+                "label": "Park 1",
+                "text": "1PN – 6 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Park 6",
+                "text": "1PN – 6.9 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Park 7",
+                "text": "1PN – 6.9 Tỷ Sổ hồng – Fullnt – View sông, công viên – 2 ban công, thoáng mát, Đang có hợp đồng thuê 19.5 triệu/tháng, Hỗ trợ vay ngân hàng"
+              }
+            ]
+          },
+          {
+            "name": "Quỹ căn khác",
+            "items": [
+              {
+                "label": "Studio",
+                "text": "5.8 Tỷ Sổ hồng – Fullnt – View Thành Phố – Còn TL"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "2-phong-ngu": {
+    "price_note": "Giá từ 8 – 14 tỷ · 68 – 92m²",
+    "badge": "49 căn",
+    "logs": [
+      {
+        "dow": "Thứ Năm",
+        "date": "24/09/2026",
+        "title": "Giỏ hàng 2PN Vinhomes Central Park – Thứ Năm 24/09/2026: Giá từ 8 tỷ",
+        "time": "07:00",
+        "groups": [
+          {
+            "name": "Khu Central",
+            "items": [
+              {
+                "label": "Central 3",
+                "text": "2PN (C3-33.01) – 9.3 Tỷ – Fullnt – Đang có hợp đồng thuê"
+              }
+            ]
+          },
+          {
+            "name": "Khu Landmark",
+            "items": [
+              {
+                "label": "Khu Landmark",
+                "text": "2PN – 9.8 Tỷ – 88 m2 – Sở hữu lâu dài"
+              },
+              {
+                "label": "Khu Landmark",
+                "text": "2PN – 11.2 Tỷ Sổ hồng – Hỗ trợ vay"
+              },
+              {
+                "label": "Khu Landmark",
+                "text": "2PN – 12.7 Tỷ – 84 m2 – Fullnt – View LM81, công viên – Còn thương lượng"
+              },
+              {
+                "label": "Landmark 1",
+                "text": "2PN – 8 Tỷ Sổ hồng – 63 m2 – Fullnt – Bao thuế phí, sẵn hợp đồng thuê"
+              },
+              {
+                "label": "Landmark 1",
+                "text": "2PN – 11.2 Tỷ Sổ hồng – 87.8 m2 – Fullnt – Decor phong cách Indochine rất đẹp, có gu"
+              },
+              {
+                "label": "Landmark 3",
+                "text": "2PN – 10.5 Tỷ Sổ hồng – 88 m2 – Fullnt – HĐT 25 triệu/tháng, hỗ trợ hủy HĐT"
+              },
+              {
+                "label": "Landmark 3",
+                "text": "2PN (L3-07) – 11.4 Tỷ Sổ hồng – 88 m2 – Fullnt – HĐT bnb, trả nhà lúc nào cũng đc"
+              },
+              {
+                "label": "Landmark 4",
+                "text": "2PN Tầng trung – 9.3 Tỷ Suất SPA – Sổ hồng – NTCB – View L81, sông, công viên – Hướng mát"
+              },
+              {
+                "label": "Landmark 4",
+                "text": "2PN – 8.xx Tỷ Suất SPA – NTCB – View thành phố thoáng – Bán được cho người VN và nước ngoài"
+              },
+              {
+                "label": "Landmark 5",
+                "text": "2PN – 9.2 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Landmark 6",
+                "text": "2PN (L6-15.12) Tầng 15 – 10.25 Tỷ Sổ hồng – 81.5 m2 – Fullnt – Layout vuông vức không góc thừa, Nội thất luxury mới 100%, Decor xịn mịn, Có sẵn khách thuê dài hạn giá 30tr net"
+              },
+              {
+                "label": "Landmark 6",
+                "text": "2PN – 11.2 Tỷ Sổ hồng – 81.7 m2 – Fullnt – Thoáng, đón sáng và gió tự nhiên – Giao dịch nhanh"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "2PN (LP-09) – 10.5 Tỷ Sổ hồng – 76 m2 – Đang có HDT 23tr"
+              }
+            ]
+          },
+          {
+            "name": "Khu Park",
+            "items": [
+              {
+                "label": "Khu Park",
+                "text": "2PN – 9.5 Tỷ Sổ hồng – 85 m2 – View thoáng"
+              },
+              {
+                "label": "Park 1",
+                "text": "2PN – 8.5 Tỷ Sổ hồng – Fullnt – Xem nhà dễ"
+              },
+              {
+                "label": "Park 1",
+                "text": "2PN (P1-04) – 8.8 Tỷ Sổ hồng – 70.5 m2 – Fullnt – Đang có HĐT, Còn thương lượng"
+              },
+              {
+                "label": "Park 2",
+                "text": "2PN (P2-08) – 10.8 Tỷ Sổ hồng – 88 m2 – View công viên, sông SG – Layout 2 bancon"
+              },
+              {
+                "label": "Park 2",
+                "text": "2PN (P2-12A) 12A – 10.9 Tỷ Sổ hồng – 88 m2 – Fullnt – View công viên, sông SG – Xéo sông, view thoáng – Layout 2 bancon – Nhà đang trống"
+              },
+              {
+                "label": "Park 3",
+                "text": "2PN (P3-29.08) – 12.99 Tỷ – 91 m2 – Fullnt – View sông công viên – DT lớn, 2 ban công, Nhà mới tinh chưa sử dụng"
+              },
+              {
+                "label": "Park 5",
+                "text": "2PN (P5-08) – 11.5 Tỷ Sổ hồng – 86 m2 – Fullnt – Còn thương lượng"
+              },
+              {
+                "label": "Park 6",
+                "text": "2PN – 9.5 Tỷ Sổ hồng – 74.4 m2 – Fullnt – Thành phố & Bitexco, view thoáng không bị chắn – Đang trống, xem nhà 24/7"
+              },
+              {
+                "label": "Park 7",
+                "text": "2PN – 9.5 Tỷ – 85 m2 – Sở hữu lâu dài"
+              },
+              {
+                "label": "Park 7",
+                "text": "2PN – 11.2 Tỷ Sổ hồng – 84.2 m2 – Fullnt – 2 ban công, 1 Lô gia, Layout đặc biệt"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dow": "Thứ Tư",
+        "date": "23/09/2026",
+        "title": "Giỏ hàng 2PN Vinhomes Central Park – Thứ Tư 23/09/2026: Giá từ 8.5 tỷ",
+        "time": "07:00",
+        "groups": [
+          {
+            "name": "Khu Central",
+            "items": [
+              {
+                "label": "Central 3",
+                "text": "2PN (C3-33.01) – 9.3 Tỷ – Fullnt – Đang có hợp đồng thuê"
+              },
+              {
+                "label": "Central 3",
+                "text": "2PN – 9.5 Tỷ Sổ hồng – 82 m2 – Fullnt – View thoáng, pháo hoa, view thành phố – Sẵn HĐT dài hạn"
+              }
+            ]
+          },
+          {
+            "name": "Khu Landmark",
+            "items": [
+              {
+                "label": "Khu Landmark",
+                "text": "2PN – 8.5 Tỷ Officetel – 82 m2 – Fullnt – Liền kề Landmark 81, Sẵn dòng tiền khai thác ngay"
+              },
+              {
+                "label": "Khu Landmark",
+                "text": "2PN – 9 Tỷ Sổ hồng – Fullnt – Sẵn HĐT 23tr"
+              },
+              {
+                "label": "Khu Landmark",
+                "text": "2PN – 9.8 Tỷ – 88 m2 – Sở hữu lâu dài"
+              },
+              {
+                "label": "Khu Landmark",
+                "text": "2PN – 12.7 Tỷ – 84 m2 – Fullnt – View LM81, công viên – Còn thương lượng"
+              },
+              {
+                "label": "Landmark 1",
+                "text": "2PN – 11.2 Tỷ Sổ hồng – 87.8 m2 – Fullnt – Decor phong cách Indochine rất đẹp, có gu"
+              },
+              {
+                "label": "Landmark 3",
+                "text": "2PN (L3-07) – 11.4 Tỷ Sổ hồng – 88 m2 – Fullnt – HĐT bnb, trả nhà lúc nào cũng đc"
+              },
+              {
+                "label": "Landmark 4",
+                "text": "2PN Tầng trung – 9.3 Tỷ Suất SPA – Sổ hồng – NTCB – View L81, sông, công viên – Hướng mát"
+              },
+              {
+                "label": "Landmark 6",
+                "text": "2PN – 9.5 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Landmark 6",
+                "text": "2PN – 10 Tỷ Sổ hồng – 81.7 m2 – NTCB – View hoa hậu – Tặng quà"
+              },
+              {
+                "label": "Landmark 6",
+                "text": "2PN (L6-15.12) – 10.25 Tỷ Sổ hồng – 81.5 m2 – Fullnt – View nội khu – Layout vuông vức, Nội thất mới 100%, Decor xịn mịn, Sẵn khách thuê 31tr net"
+              },
+              {
+                "label": "Landmark 6",
+                "text": "2PN – 11.2 Tỷ Sổ hồng – 81.7 m2 – Fullnt – Thoáng, đón sáng và gió tự nhiên – Giao dịch nhanh"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "2PN – 18 Tỷ Sổ hồng – View công viên"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "2PN (LP-06) – 10.3 Tỷ – Thương lượng"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "2PN (LP-01) – 10.5 Tỷ Sổ hồng – View Bitexco – Chủ ngộp gấp, Sẵn HĐT"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "2PN (LP-09) – 10.5 Tỷ Sổ hồng – 76 m2 – Đang có HDT 23tr"
+              }
+            ]
+          },
+          {
+            "name": "Khu Park",
+            "items": [
+              {
+                "label": "Khu Park",
+                "text": "2PN – 10.3 Tỷ Sổ hồng – 90 m2 – Fullnt – Sẵn HĐT"
+              },
+              {
+                "label": "Park 1",
+                "text": "2PN – 8.5 Tỷ Sổ hồng – Fullnt – Xem nhà dễ"
+              },
+              {
+                "label": "Park 1",
+                "text": "2PN – 8.8 Tỷ Sổ hồng – 70.5 m2 – Fullnt – Đang có HĐT, Còn thương lượng"
+              },
+              {
+                "label": "Park 1",
+                "text": "2PN – 9.3 Tỷ Sổ hồng – NTCB – View sông"
+              },
+              {
+                "label": "Park 1",
+                "text": "2PN – 9.4 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Park 2",
+                "text": "2PN – 9.8 Tỷ Sổ hồng – 90 m2 – Fullnt – Hiện đang có HĐT"
+              },
+              {
+                "label": "Park 2",
+                "text": "2PN (P2-08) Tầng đẹp – 10.8 Tỷ Sổ hồng – 88 m2 – View công viên, sông SG – Ban công, Layout 2 bancon"
+              },
+              {
+                "label": "Park 3",
+                "text": "2PN (P3-29.08) – 12.99 Tỷ – 91 m2 – Fullnt – View sông công viên – DT lớn, 2 ban công, Nhà mới tinh chưa sử dụng"
+              },
+              {
+                "label": "Park 4",
+                "text": "2PN – 9.5 Tỷ Suất SPA – NTCB"
+              },
+              {
+                "label": "Park 4",
+                "text": "2PN – 10 Tỷ Sổ hồng – 87 m2 – NTCB"
+              },
+              {
+                "label": "Park 5",
+                "text": "2PN (P5-1X.08) – 11.5 Tỷ Sổ hồng – 86 m2 – Fullnt – View sông, Công viên, Cầu Sài Gòn – Thoáng mát"
+              },
+              {
+                "label": "Park 5",
+                "text": "2PN (P5-01) – 13.5 Tỷ Sổ hồng – 88 m2 – View sông SG – Nhà đẹp mới, mát mẻ"
+              },
+              {
+                "label": "Park 6",
+                "text": "2PN (P6A-08B) – 8.5 Tỷ Sổ hồng – 70 m2 – Fullnt – View L81, thành phố, hồ bơi – Căn góc"
+              },
+              {
+                "label": "Park 6",
+                "text": "2PN – 9.3 Tỷ Sổ hồng – 76 m2 – Fullnt – Nội thất mới tinh, sở hữu lâu dài"
+              },
+              {
+                "label": "Park 6",
+                "text": "2PN – 9.5 Tỷ Sổ hồng – 74.4 m2 – Fullnt – Thành phố & Bitexco, view thoáng – Đang trống, xem nhà 24/7"
+              },
+              {
+                "label": "Park 7",
+                "text": "2PN – 8.6 Tỷ Suất SPA – Fullnt"
+              },
+              {
+                "label": "Park 7",
+                "text": "2PN – 9.5 Tỷ – 85 m2 – Sở hữu lâu dài"
+              },
+              {
+                "label": "Park 7",
+                "text": "2PN – 9.7 Tỷ Sổ hồng – 85 m2 – Fullnt"
+              }
+            ]
+          },
+          {
+            "name": "Quỹ căn khác",
+            "items": [
+              {
+                "label": "Park 1",
+                "text": "2PN (P1-2) – 12 Tỷ Sổ hồng – View đẹp – Gần công viên, Sẵn HĐ thuê 31 triệu/tháng"
+              },
+              {
+                "label": "Quỹ căn khác",
+                "text": "2PN – 30 Tỷ Sổ hồng – 100 m2 – Fullnt – Đang có sẵn HĐT 55tr/tháng"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "3-phong-ngu": {
+    "price_note": "Giá từ 13 – 20 tỷ · 95 – 140m²",
+    "badge": "32 căn",
+    "logs": [
+      {
+        "dow": "Thứ Năm",
+        "date": "24/09/2026",
+        "title": "Giỏ hàng 3PN Vinhomes Central Park – Thứ Năm 24/09/2026: Giá từ 13 Tỷ",
+        "time": "07:00",
+        "groups": [
+          {
+            "name": "Khu Central",
+            "items": [
+              {
+                "label": "Central 2",
+                "text": "3PN – 14.2 Tỷ Sổ hồng – Fullnt – Căn góc"
+              }
+            ]
+          },
+          {
+            "name": "Khu Landmark",
+            "items": [
+              {
+                "label": "Khu Landmark",
+                "text": "3PN – 15 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Khu Landmark",
+                "text": "3PN – 15.8 Tỷ Sổ hồng – 104 m2 – View LM81, sông, công viên"
+              },
+              {
+                "label": "Landmark 1",
+                "text": "3PN – 14.6 Tỷ Sổ hồng – 98.5 m2 – NTCB – Layout rộng rãi, thoáng, Căn đẹp"
+              },
+              {
+                "label": "Landmark 2",
+                "text": "3PN – 15.5 Tỷ Sổ hồng – Fullnt – Đang sẵn hdt"
+              },
+              {
+                "label": "Landmark 2",
+                "text": "3PN – 15.7 Tỷ Sổ hồng – 100 m2 – NTCB – View Landmark 81 – Xem nhà dễ"
+              },
+              {
+                "label": "Landmark 2",
+                "text": "3PN (L2-20.08) Tầng 20 – 22 Tỷ Sổ hồng – Fullnt – Siêu đẹp, siêu hiếm, Nhà 1 đời chủ, Sạch đẹp, Phong thuỷ tốt"
+              },
+              {
+                "label": "Landmark 3",
+                "text": "3PN (L3-11) – 15.5 Tỷ Sổ hồng – 104 m2 – View LM81, sông, công viên"
+              },
+              {
+                "label": "Landmark 4",
+                "text": "3PN – 17.6 Tỷ – Fullnt – View Lm81 quả trứng – Nhà còn hiện trạng cơ bản chưa qua sửa chữa"
+              },
+              {
+                "label": "Landmark 5",
+                "text": "3PN (L5-12B.02) 12b – 15.6 Tỷ Sổ hồng – 108.7 m2 – View đẹp – Căn góc, cực thoáng, tiện ích ngập tràn sát Landmark 81 & Công viên 14ha, thương lượng"
+              },
+              {
+                "label": "Landmark 5",
+                "text": "3PN (L5-09) – 15.7 Tỷ Sổ hồng – Fullnt – View LM81 – Hướng mát, Đang có hđ thuê"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "3PN – 14.5 Tỷ Sổ hồng – 108.2 m2 – Fullnt – View cầu Ba Son & Bitexco – Căn góc, Nhà đang trống, Hỗ trợ vay ngân hàng"
+              }
+            ]
+          },
+          {
+            "name": "Khu Park",
+            "items": [
+              {
+                "label": "Khu Park",
+                "text": "3PN – 13.6 Tỷ Sổ hồng – View công viên"
+              },
+              {
+                "label": "Khu Park",
+                "text": "3PN – 13.9 Tỷ Sổ hồng – 115 m2 – View sông – Toà Park yên tĩnh"
+              },
+              {
+                "label": "Park 1",
+                "text": "3PN (P1-12A) 12A – 14.99 Tỷ Sổ hồng – 117 m2 – View sông, View công viên – Thoáng đẹp, Chủ thiện chí bán nhanh, Thương lượng mạnh"
+              },
+              {
+                "label": "Park 1",
+                "text": "3PN – 27.6 Tỷ Suất SPA – 170 m2 – Sẵn HĐT, giao dịch được cả khách Việt Nam & khách nước ngoài, Căn diện tích lớn, phù hợp đầu tư & khai thác dòng tiền"
+              },
+              {
+                "label": "Park 2",
+                "text": "3PN (P2-12) – 13 Tỷ – Đang trống"
+              },
+              {
+                "label": "Park 3",
+                "text": "3PN (P3-09) – 14.5 Tỷ Suất SPA – 116 m2 – NTCB – View công viên"
+              },
+              {
+                "label": "Park 3",
+                "text": "3PN (P3-09) – 15 Tỷ – 116 m2 – View công viên"
+              },
+              {
+                "label": "Park 6",
+                "text": "3PN Tầng trung – 18 Tỷ Sổ hồng – 123.7 m2 – Trục hiếm, vị trí đẹp, không gian rộng, thoáng và dễ ở"
+              },
+              {
+                "label": "Park 7",
+                "text": "3PN (P7-06) – 15.9 Tỷ – 16 m2 – Fullnt – View hồ bơi resort – Sở hữu lâu dài"
+              }
+            ]
+          },
+          {
+            "name": "Quỹ căn khác",
+            "items": [
+              {
+                "label": "3PN",
+                "text": "13.5 Tỷ Sổ hồng – 122 m2 – Fullnt"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dow": "Thứ Tư",
+        "date": "23/09/2026",
+        "title": "Giỏ hàng 3PN Vinhomes Central Park – Thứ Tư 23/09/2026: Giá từ 12 tỷ",
+        "time": "07:00",
+        "groups": [
+          {
+            "name": "Khu Central",
+            "items": [
+              {
+                "label": "Central 3",
+                "text": "3PN – 13.5 Tỷ Sổ hồng – Fullnt – Phù hợp khách sợ độ cao – Chủ thiện chí bán"
+              }
+            ]
+          },
+          {
+            "name": "Khu Landmark",
+            "items": [
+              {
+                "label": "Khu Landmark",
+                "text": "3PN – 13 Tỷ Sổ hồng – Nhà đang ở dễ xem nhận nhà ngay"
+              },
+              {
+                "label": "Khu Landmark",
+                "text": "3PN – 15 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Khu Landmark",
+                "text": "3PN – 15.8 Tỷ Sổ hồng – 104 m2 – View LM81, sông, công viên"
+              },
+              {
+                "label": "Landmark 1",
+                "text": "3PN (L1-10) – 17.9 Tỷ – Fullnt – View L81, View sông SG – Bán gấp, nội thất luxury"
+              },
+              {
+                "label": "Landmark 2",
+                "text": "3PN – 13 Tỷ Sổ hồng – Còn thương lượng"
+              },
+              {
+                "label": "Landmark 2",
+                "text": "3PN – 15.5 Tỷ Sổ hồng – Fullnt – Đang sẵn hdt"
+              },
+              {
+                "label": "Landmark 2",
+                "text": "3PN – 15.7 Tỷ Sổ hồng – 100 m2 – NTCB – View Landmark 81 – Xem nhà dễ"
+              },
+              {
+                "label": "Landmark 3",
+                "text": "3PN – 15 Tỷ Sổ hồng – 106 m2 – Fullnt – View công viên, L81 – Thoáng đẹp"
+              },
+              {
+                "label": "Landmark 4",
+                "text": "3PN – 15.6 Tỷ Sổ hồng – Fullnt – View thành phố – Thoáng, thuế phí bên bán, có thương lượng"
+              },
+              {
+                "label": "Landmark 4",
+                "text": "3PN (L4-09) – 18.2 Tỷ Sổ hồng – 108 m2 – View lm81 – Siêu đẹp ôm trọn quả trứng"
+              },
+              {
+                "label": "Landmark 5",
+                "text": "3PN (L5-08) – 15 Tỷ Sổ hồng – Fullnt, NTCB – Giao ngay"
+              },
+              {
+                "label": "Landmark 5",
+                "text": "3PN (L5-32.10) Tầng 32 – 18.9 Tỷ Sổ hồng – 108 m2 – Fullnt – View sông, công viên, Landmark 81 – Nhà đẹp, nội thất cao cấp"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "3PN – 32 Tỷ Sổ hồng – Fullnt – View sông, công viên – Hướng mát, Đang có hđ thuê đến 2028, Khách mua sang hđt hoặc chủ bồi thường hđt"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "3PN – 14.5 Tỷ Sổ hồng – 108.2 m2 – Fullnt – View cầu Ba Son & Bitexco – Căn góc, Nhà đang trống, Hỗ trợ vay ngân hàng"
+              },
+              {
+                "label": "Landmark Plus",
+                "text": "3PN – 15.5 Tỷ Sổ hồng – Fullnt"
+              }
+            ]
+          },
+          {
+            "name": "Khu Park",
+            "items": [
+              {
+                "label": "Khu Park",
+                "text": "3PN – 13.x Tỷ Suất SPA – 107 m2 – View sông, View công viên"
+              },
+              {
+                "label": "Khu Park",
+                "text": "3PN – 13.8 Tỷ – 115 m2 – View sông – 2 ban công thoáng, Nhà mới ko hao mòn nhiều, Hướng mát đón gió cả ngày"
+              },
+              {
+                "label": "Park 1",
+                "text": "3PN (P1-12A) 12A – 14.99 Tỷ Sổ hồng – 117 m2 – View sông, View công viên – Thoáng đẹp, Chủ thiện chí bán nhanh, Thương lượng mạnh"
+              },
+              {
+                "label": "Park 1",
+                "text": "3PN – 27.6 Tỷ Suất SPA – 170 m2 – Sẵn HĐT, Căn diện tích lớn, phù hợp đầu tư & khai thác dòng tiền, giao dịch được cả khách Việt Nam & khách nước ngoài"
+              },
+              {
+                "label": "Park 2",
+                "text": "3PN – 16 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Park 3",
+                "text": "3PN – 15.5 Tỷ – Fullnt"
+              },
+              {
+                "label": "Park 4",
+                "text": "3PN – 15.8 Tỷ Suất SPA"
+              },
+              {
+                "label": "Park 6",
+                "text": "3PN – 17 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Park 6",
+                "text": "3PN Tầng trung – 18 Tỷ Sổ hồng – 123.7 m2 – Trục hiếm, vị trí đẹp, không gian rộng, thoáng và dễ ở"
+              },
+              {
+                "label": "Park 7",
+                "text": "3PN – 12 Tỷ Officetel – Fullnt – Đã tt 5%"
+              },
+              {
+                "label": "Park 7",
+                "text": "3PN – 15.5 Tỷ Officetel, Sổ hồng – Fullnt – Nhà mới, chỉnh sửa layout"
+              },
+              {
+                "label": "Park 7",
+                "text": "3PN – 15.6 Tỷ Suất SPA – Fullnt"
+              },
+              {
+                "label": "Park 7",
+                "text": "3PN – 15.9 Tỷ – Bán lỗ"
+              }
+            ]
+          },
+          {
+            "name": "Quỹ căn khác",
+            "items": [
+              {
+                "label": "Quỹ căn khác",
+                "text": "3PN – 13.5 Tỷ Sổ hồng – 122 m2 – Fullnt"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "4-phong-ngu": {
+    "price_note": "Giá từ 17 – 30 tỷ · 142 – 188m²",
+    "badge": "20 căn",
+    "logs": [
+      {
+        "dow": "Thứ Năm",
+        "date": "24/09/2026",
+        "title": "Giỏ hàng 4PN Vinhomes Central Park – Thứ Năm 24/09/2026: Giá từ 24 tỷ",
+        "time": "07:00",
+        "groups": [
+          {
+            "name": "Khu Landmark",
+            "items": [
+              {
+                "label": "Landmark 1",
+                "text": "4PN (L1-01) – 25.2 Tỷ Sổ hồng – 159.7 m2 – Fullnt – Vị trí đẹp, căn hộ rộng hiếm có, hàng đẹp, giá tốt"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "4PN – 30.5 Tỷ Sổ hồng"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "4PN – 35.5 Tỷ Suất SPA – 172 m2 – NTCB – View trực diện sông Sài Gòn, cầu Sài Gòn, biệt thự Quận 2 – Giao dịch cho NNN & khách Việt"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "4PN (LM81-32.09) – 45 Tỷ Sổ hồng – 186 m2 – Còn thương lượng"
+              }
+            ]
+          },
+          {
+            "name": "Khu Park",
+            "items": [
+              {
+                "label": "Park 1",
+                "text": "4PN (P1-12B) – 27.5 Tỷ – 154 m2 – View sông Sài Gòn, công viên – Căn góc, đón gió và ánh sáng tự nhiên"
+              },
+              {
+                "label": "Park 4",
+                "text": "4PN (P4-06) – 24.x Tỷ – 151 m2 – View sông Sài Gòn, công viên – Ban công rộng thoáng mát, căn góc đầu hồi cực hiếm, đón gió và ánh sáng tự nhiên"
+              },
+              {
+                "label": "Park 4",
+                "text": "4PN – 24.9 Tỷ Suất SPA – 151 m2 – NTCB – View sông, Trực diện công viên quả trứng"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dow": "Thứ Tư",
+        "date": "23/09/2026",
+        "title": "Giỏ hàng 4PN Vinhomes Central Park – Thứ Tư 23/09/2026: Giá từ 16.8 Tỷ",
+        "time": "07:00",
+        "groups": [
+          {
+            "name": "Khu Landmark",
+            "items": [
+              {
+                "label": "Landmark 1",
+                "text": "4PN (L1-04.01) – 25.2 Tỷ Sổ hồng – 159.7 m2 – Fullnt – Nhà đang trống, công chứng nhanh, hỗ trợ vay, xem nhà 24/7, còn thương lượng"
+              },
+              {
+                "label": "Landmark 1",
+                "text": "4PN – 27.9 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Landmark 1",
+                "text": "4PN – 28.5 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Landmark 6",
+                "text": "4PN – 27 Tỷ Sổ hồng – Fullnt"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "4PN – 30.5 Tỷ Sổ hồng"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "4PN – 35.5 Tỷ Suất SPA – 172 m2 – NTCB – View trực diện sông Sài Gòn, cầu Sài Gòn, biệt thự Quận 2 – Giao dịch cho NNN & khách Việt"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "4PN – 35.5 Tỷ Sổ hồng – 164 m2 – Fullnt – View thoáng nhìn thành phố – Hỗ trợ vay, Đang trống – xem dễ"
+              },
+              {
+                "label": "Landmark 81",
+                "text": "4PN (LM81-32.09) – 45 Tỷ Sổ hồng – 186 m2 – Còn thương lượng"
+              }
+            ]
+          },
+          {
+            "name": "Khu Park",
+            "items": [
+              {
+                "label": "Khu Park",
+                "text": "4PN – 24.8 Tỷ – 151 m2 – Fullnt – View đầu hồi nhìn sông công viên – Đẹp hiếm"
+              },
+              {
+                "label": "Park 1",
+                "text": "4PN – 28 Tỷ – NTCB"
+              },
+              {
+                "label": "Park 4",
+                "text": "4PN – 25 Tỷ Suất SPA – NTCB"
+              },
+              {
+                "label": "Park 6",
+                "text": "4PN (P6B-07) – 16.8 Tỷ Sổ hồng – 140 m2 – Suất SPA – Fullnt"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
