@@ -86,7 +86,7 @@
       <div id="google_translate_element" class="notranslate" aria-hidden="true"></div>
       <script src="/frontend/js/header.js"></script>
       <script src="/frontend/js/homepage.js"></script>
-      <script src="/frontend/googletranslate/google-translate-lang.js"></script>
+      <script src="/frontend/googletranslate/google-translate-lang.js?v={{ filemtime(public_path('frontend/googletranslate/google-translate-lang.js')) }}"></script>
       @yield('js')
    </body>
 </html>

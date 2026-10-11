@@ -15,6 +15,7 @@
                    <a href="#" class="bvh-lang" data-gt-lang="en" title="English" aria-label="English"><img src="/frontend/img/flag-gb.svg"
                            alt=""></a>
                    <a href="#" class="bvh-lang" data-gt-lang="zh-CN" title="中文" aria-label="中文"><img src="/frontend/img/flag-cn.svg" alt=""></a>
+                   <a href="#" class="bvh-lang" data-gt-lang="ko" title="한국어" aria-label="한국어"><img src="/frontend/img/flag-kr.svg" alt=""></a>
                </span>
                <span class="bvh-sep">|</span>
                <a class="bvh-tb-phone" href="">{{$setting->phone1}} (Zalo)</a>
@@ -88,6 +89,7 @@
                    <a href="#" class="bvh-lang" data-gt-lang="en" title="English" aria-label="English"><img src="/frontend/img/flag-gb.svg"
                            alt=""></a>
                    <a href="#" class="bvh-lang" data-gt-lang="zh-CN" title="中文" aria-label="中文"><img src="/frontend/img/flag-cn.svg" alt=""></a>
+                   <a href="#" class="bvh-lang" data-gt-lang="ko" title="한국어" aria-label="한국어"><img src="/frontend/img/flag-kr.svg" alt=""></a>
                </span>
                <div class="bvh-nav-burger" id="bvh-nav-burger" role="button" aria-label="Menu"
                    aria-expanded="false" aria-controls="bvh-mobile-menu">

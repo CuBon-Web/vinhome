@@ -39,17 +39,28 @@
            <div class="hero-inner">
             <div class="eyebrow eyebrow-light"><span class="dash"></span>Vinhomes Central Park · Bình Thạnh
             </div>
-               @if ($heroTitle !== '')
+               {{-- @if ($heroTitle !== '')
                <h1 class="serif">{!! $heroTitle !!}</h1>
                @endif
                @if ($heroDesc !== '')
                <div class="hero-sub">{!! $heroDesc !!}</div>
-               @endif
-               @if ($heroLink !== '' || !empty($setting->phone1))
-               <div class="hero-actions">
-                   <a class="btn btn-gold" href="">Xem giỏ hàng <span class="arr">&rarr;</span></a>
-                   <a class="btn btn-ghost-light" href="tel:{{$setting->phone1}}">Gọi {{$setting->phone1}}</a>
-               </div>
+               @endif --}}
+               <form class="hero-search" action="{{ route('search_result') }}" method="get" role="search">
+                   <label class="hs-field hs-cate">
+                       <span class="hs-label">Danh mục</span>
+                       <select name="cate">
+                           <option value="">Tất cả</option>
+                           @foreach ($categoryhome ?? [] as $searchCate)
+                           <option value="{{ $searchCate->slug }}">{{ languageName($searchCate->name) }}</option>
+                           @endforeach
+                       </select>
+                   </label>
+                   <label class="hs-field hs-keyword">
+                       <span class="hs-label">Từ khóa</span>
+                       <input type="text" name="keyword" placeholder="Tòa, số phòng ngủ, view..." autocomplete="off">
+                   </label>
+                   <button type="submit" class="hs-submit">Tìm kiếm <span class="arr">&rarr;</span></button>
+               </form>
                <div class="hero-stats">
                    <div class="st">
                        <div class="v">43,91<small> ha</small></div>
@@ -68,7 +79,6 @@
                        <div class="l">Pháp lý rõ ràng</div>
                    </div>
                </div>
-               @endif
            </div>
        </div>
    </section>

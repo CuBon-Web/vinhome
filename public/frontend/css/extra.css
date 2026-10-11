@@ -1,1 +1,37 @@
  .hp-tl-mini-feed {position: relative;padding-left: 24px;margin: 20px 0 28px;text-align: left;}.hp-tl-mini-feed::before {content: '';position: absolute;left: 5px;top: 10px;bottom: 0;width: 2px;background: #e5e0d5;}.hp-tl-mini-day {position: relative;margin-bottom: 28px;}.hp-tl-mini-day:last-child {margin-bottom: 0;}.hp-tl-mini-node {position: absolute;left: -24px;top: 4px;width: 12px;height: 12px;box-sizing: border-box;border-radius: 50%;background: #8c6c34;border: 2px solid #fdfbf6;box-shadow: 0 0 0 1.5px #8c6c34;z-index: 2;}.hp-tl-mini-day-hdr {display: flex;align-items: baseline;gap: 8px;margin-bottom: 12px;}.hp-tl-mini-day-dow {font-size: 14px;font-weight: 700;color: #8c6c34;font-family: "Be Vietnam Pro", sans-serif;}.hp-tl-mini-day-date {font-size: 14px;font-weight: 700;color: #1f2937;font-family: "Be Vietnam Pro", sans-serif;}.hp-tl-mini-cards {display: flex;flex-direction: column;gap: 12px;}.hp-tl-mini-card {background: #ffffff;border: 1px solid #e5e0d5;border-radius: 12px;padding: 18px 20px;transition: border-color .2s, box-shadow .2s;text-align: left;}.hp-tl-mini-card:hover {border-color: #8c6c34;box-shadow: 0 4px 14px rgba(140,108,52,.08);}.hp-tl-mini-card-top {display: flex;justify-content: space-between;align-items: flex-start;gap: 10px;margin-bottom: 10px;}.hp-tl-mini-card-top h3 {font-family: "Be Vietnam Pro", sans-serif !important;font-size: 15.5px !important;font-weight: 700 !important;line-height: 1.35 !important;color: #111827 !important;margin: 0 !important;padding: 0 !important;}.hp-tl-mini-card-time {font-size: 12px;color: #9ca3af;white-space: nowrap;font-family: "Be Vietnam Pro", sans-serif;}.hp-tl-mini-card-body {font-size: 14px;line-height: 1.65;color: #374151;font-family: "Be Vietnam Pro", sans-serif;}.hp-tl-mini-card-body p {margin: 0 0 8px;}.hp-tl-mini-card-body p:last-child {margin-bottom: 0;}.hp-tl-mini-card-body ul {margin: 8px 0;padding-left: 20px;}.hp-tl-mini-card-body li {margin-bottom: 4px;}@media(max-width: 600px) {.hp-tl-mini-feed {padding-left: 22px;}.hp-tl-mini-feed::before {left: 4px;}.hp-tl-mini-node {left: -22px;width: 10px;height: 10px;box-sizing: border-box;border: 1.5px solid #fdfbf6;box-shadow: 0 0 0 1.2px #8c6c34;top: 5px;}.hp-tl-mini-card {padding: 15px;}.hp-tl-mini-card-top {flex-direction: column;gap: 4px;}}
+/* Thanh tìm kiếm: hero trang chủ + trang kết quả */
+.hero-search { display: flex; align-items: stretch; gap: 0; width: 100%; max-width: 720px; margin: 30px 0 0; padding: 6px; background: #fff; border-radius: 16px; box-shadow: 0 18px 50px rgba(0,0,0,.22); font-family: "Be Vietnam Pro", system-ui, sans-serif; box-sizing: border-box; }
+.hero-search * { box-sizing: border-box; }
+.hero-search .hs-field { display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 8px 16px; margin: 0; min-width: 0; cursor: text; }
+.hero-search .hs-cate { flex: 0 0 190px; border-right: 1px solid #ece5d8; cursor: pointer; }
+.hero-search .hs-keyword { flex: 1 1 auto; }
+.hero-search .hs-label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #8c6e36; line-height: 1.2; }
+.hero-search select, .hero-search input { width: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0; height: 26px; font: inherit; font-size: 15px; font-weight: 500; color: #1c1a16; box-shadow: none; }
+.hero-search select { appearance: none; -webkit-appearance: none; padding-right: 18px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%238c6e36' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right center; cursor: pointer; }
+.hero-search input::placeholder { color: #a39a8c; font-weight: 400; }
+.hero-search .hs-submit { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; padding: 0 26px; border: 0; border-radius: 12px; background: #b28e4b; color: #fff; font: inherit; font-size: 14px; font-weight: 600; letter-spacing: .02em; cursor: pointer; transition: background .2s; }
+.hero-search .hs-submit:hover { background: #8c6e36; }
+.hero-search--light { max-width: none; margin: 0 0 40px; box-shadow: 0 8px 28px rgba(33,29,23,.06); border: 1px solid #ece5d8; }
+@media (max-width: 640px) {
+  .hero-search { flex-direction: column; padding: 8px; border-radius: 14px; }
+  .hero-search .hs-cate { flex: 0 0 auto; border-right: 0; border-bottom: 1px solid #ece5d8; }
+  .hero-search .hs-field { padding: 10px 12px; }
+  .hero-search .hs-submit { justify-content: center; height: 46px; margin-top: 6px; }
+}
+.hero .hero-search { max-width: 920px; margin: 0; padding: 10px; gap: 10px; background: rgba(22,19,15,.42); border: 1px solid rgba(255,255,255,.16); border-radius: 20px; box-shadow: 0 30px 70px rgba(0,0,0,.35); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.hero .hero-search .hs-field { min-height: 70px; padding: 14px 22px; background: rgba(255,255,255,.97); border-radius: 14px; transition: box-shadow .2s; }
+.hero .hero-search .hs-field:focus-within { box-shadow: 0 0 0 2px #c9a961; }
+.hero .hero-search .hs-cate { flex: 0 0 240px; border-right: 0; }
+.hero .hero-search .hs-keyword { padding-left: 54px; background: rgba(255,255,255,.97) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23b28e4b' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5'/%3E%3C/svg%3E") no-repeat 20px center; }
+.hero .hero-search select, .hero .hero-search input { height: 28px; font-size: 16px; }
+.hero .hero-search .hs-submit { padding: 0 34px; border-radius: 14px; font-size: 15px; background: linear-gradient(135deg, #c9a961, #a8843f); box-shadow: 0 10px 24px rgba(178,142,75,.35); transition: transform .2s, box-shadow .2s, filter .2s; }
+.hero .hero-search .hs-submit:hover { background: linear-gradient(135deg, #c9a961, #a8843f); filter: brightness(1.06); transform: translateY(-1px); box-shadow: 0 14px 30px rgba(178,142,75,.45); }
+.hero .hero-search .hs-submit .arr { transition: transform .2s; }
+.hero .hero-search .hs-submit:hover .arr { transform: translateX(3px); }
+@media (max-width: 640px) {
+  .hero .hero-search { padding: 8px; gap: 8px; border-radius: 16px; }
+  .hero .hero-search .hs-field { min-height: 60px; padding: 10px 16px; }
+  .hero .hero-search .hs-cate { flex: 0 0 auto; border-bottom: 0; }
+  .hero .hero-search .hs-keyword { padding-left: 46px; background-position: 16px center; }
+  .hero .hero-search .hs-submit { height: 52px; margin-top: 0; }
+}

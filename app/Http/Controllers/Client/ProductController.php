@@ -530,20 +530,35 @@ class ProductController extends Controller
     public function searchResult(Request $request)
     {
         $keyword = trim((string) ($request->keyword ?? $request->keywordsearch ?? $request->q ?? ''));
+        $cate = trim((string) $request->cate);
+        $category = $cate !== '' ? Category::where('slug', $cate)->first(['id', 'name', 'slug']) : null;
+        if (!$category) {
+            $cate = '';
+        }
         if ($keyword === '') {
-            return redirect()->route('home');
+            return $category
+                ? redirect()->route('allListProCate', ['danhmuc' => $category->slug])
+                : redirect()->route('home');
         }
 
-        $data['product'] = Product::where('status', 1)
+        $query = Product::where('status', 1)
             ->where('consignment', 0)
-            ->where('name', 'LIKE', '%' . $keyword . '%')
+            ->where('name', 'LIKE', '%' . $keyword . '%');
+        if ($category) {
+            $query->where('cate_slug', $category->slug);
+        }
+
+        $data['product'] = $query
             ->with(['cate:id,slug,name'])
             ->orderBy('id', 'DESC')
             ->paginate(18)
-            ->appends(['keyword' => $keyword]);
+            ->appends(array_filter(['keyword' => $keyword, 'cate' => $cate]));
 
         $this->attachVariantPriceRange($data['product']);
         $data['keyword'] = $keyword;
+        $data['cate'] = $cate;
+        $data['cateName'] = $category ? languageName($category->name) : '';
+        $data['searchCategories'] = Category::where('status', 1)->orderBy('sort')->orderBy('id')->get(['id', 'name', 'slug']);
 
         return view('product.search_result', $data);
     }

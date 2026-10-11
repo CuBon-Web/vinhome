@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20">
+  <rect width="30" height="20" fill="#fff"/>
+  <g transform="translate(15,10) rotate(33.69)">
+    <path d="M-5,0a5,5 0 0,1 10,0z" fill="#CD2E3A"/>
+    <path d="M-5,0a5,5 0 0,0 10,0z" fill="#0047A0"/>
+    <circle cx="-2.5" cy="0" r="2.5" fill="#CD2E3A"/>
+    <circle cx="2.5" cy="0" r="2.5" fill="#0047A0"/>
+  </g>
+  <g fill="#000">
+    <g transform="translate(15,10) rotate(-56.31) translate(0,-8)">
+      <rect x="-2.5" y="-1.6" width="5" height=".8"/><rect x="-2.5" y="-.4" width="5" height=".8"/><rect x="-2.5" y=".8" width="5" height=".8"/>
+    </g>
+    <g transform="translate(15,10) rotate(56.31) translate(0,-8)">
+      <rect x="-2.5" y="-1.6" width="2.2" height=".8"/><rect x=".3" y="-1.6" width="2.2" height=".8"/><rect x="-2.5" y="-.4" width="5" height=".8"/><rect x="-2.5" y=".8" width="2.2" height=".8"/><rect x=".3" y=".8" width="2.2" height=".8"/>
+    </g>
+    <g transform="translate(15,10) rotate(123.69) translate(0,-8)">
+      <rect x="-2.5" y="-1.6" width="5" height=".8"/><rect x="-2.5" y="-.4" width="2.2" height=".8"/><rect x=".3" y="-.4" width="2.2" height=".8"/><rect x="-2.5" y=".8" width="5" height=".8"/>
+    </g>
+    <g transform="translate(15,10) rotate(-123.69) translate(0,-8)">
+      <rect x="-2.5" y="-1.6" width="2.2" height=".8"/><rect x=".3" y="-1.6" width="2.2" height=".8"/><rect x="-2.5" y="-.4" width="2.2" height=".8"/><rect x=".3" y="-.4" width="2.2" height=".8"/><rect x="-2.5" y=".8" width="2.2" height=".8"/><rect x=".3" y=".8" width="2.2" height=".8"/>
+    </g>
+  </g>
+</svg>

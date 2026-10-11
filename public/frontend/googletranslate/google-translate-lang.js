@@ -1,6 +1,6 @@
 /**
  * Nội dung gốc trên site là tiếng Việt.
- * VI = không dịch. EN / 中文 = Google Translate.
+ * VI = không dịch. EN / 中文 / 한국어 = Google Translate.
  */
 (function (global) {
     'use strict';
@@ -9,7 +9,7 @@
     var DEFAULT_LANG = 'vi';
     var STORAGE_KEY = 'gt_site_lang';
     var COOKIE_NAME = 'googtrans';
-    var LANGS = ['vi', 'en', 'zh-CN'];
+    var LANGS = ['vi', 'en', 'zh-CN', 'ko'];
 
     function readCookie() {
         var match = document.cookie.match(/(?:^|;\s*)googtrans=([^;]*)/);
@@ -83,7 +83,7 @@
         } catch (e) {}
 
         var cookie = readCookie();
-        var match = cookie.match(/\/(en|zh-CN|zh-cn|vi)\/?$/i);
+        var match = cookie.match(/\/(en|zh-CN|zh-cn|ko|vi)\/?$/i);
         if (match) {
             var fromCookie = normalizeLang(match[1]);
             if (fromCookie && fromCookie !== PAGE_LANG) {
