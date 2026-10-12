@@ -22,6 +22,7 @@ class FloorPlan extends Model
         'journal',
         'sort',
         'status',
+        'featured',
     ];
 
     protected $casts = [

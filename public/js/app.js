@@ -31983,6 +31983,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 var OVERVIEW_BLOCK = "\n<table class=\"fp-overview\">\n<tbody>\n<tr>\n<td><img src=\"\" alt=\"M\u1EB7t b\u1EB1ng t\u1ED5ng th\u1EC3\" /><p>Layout Landmark 3 (Layout L2)</p></td>\n<td>\n<h2>Layout Landmark 3</h2>\n<ul>\n<li>S\u1ED1 t\u1EA7ng: 50 t\u1EA7ng</li>\n<li>S\u1ED1 l\u01B0\u1EE3ng c\u0103n h\u1ED9/s\xE0n: 13 c\u0103n h\u1ED9</li>\n<li>S\u1ED1 l\u01B0\u1EE3ng thang m\xE1y/to\xE0: 12 thang m\xE1y t\u1ED1c \u0111\u1ED9 cao</li>\n<li>S\u1ED1 l\u01B0\u1EE3ng thang tho\xE1t hi\u1EC3m/to\xE0: 2 thang tho\xE1t hi\u1EC3m v\u1EDBi c\u1EEDa ch\u1ED1ng ch\xE1y</li>\n<li>Chi\u1EC1u r\u1ED9ng h\xE0nh lang: 2,7m</li>\n<li>H\u1EA7m \u0111\u1EC3 xe th\xF4ng minh v\u1EDBi 2 t\u1EA7ng</li>\n<li>C\u0103n h\u1ED9 hi\u1EC7n \u0111\u1EA1i t\u1EEB 1, 2, 3 ph\xF2ng ng\u1EE7</li>\n<li>C\u0103n h\u1ED9 nh\xE0 ph\u1ED1 th\u01B0\u01A1ng m\u1EA1i th\xF4ng t\u1EA7ng (duplex shophouse)</li>\n</ul>\n<p>N\u0103m kh\u1EDFi c\xF4ng: 2015</p>\n<p>N\u0103m ho\xE0n th\xE0nh: 2017</p>\n</td>\n</tr>\n</tbody>\n</table>";
@@ -32078,7 +32084,8 @@ function toSlug(value) {
         content: "<h2>Layout</h2>\n<ul>\n<li>Số tầng:</li>\n<li>Số lượng căn hộ/sàn:</li>\n</ul>\n<p>[[nhat-ky]]</p>\n<h2>Mặt bằng các tầng</h2>",
         journal: [blankJournalDay()],
         sort: 1,
-        status: "1"
+        status: "1",
+        featured: 0
       };
     },
     onPageName: function onPageName() {
@@ -32248,7 +32255,8 @@ function toSlug(value) {
           content: _this3.articleHtml(data),
           journal: _this3.hydrateJournal(data.journal),
           sort: data.sort != null ? String(data.sort) : "0",
-          status: data.status != null ? String(data.status) : "1"
+          status: data.status != null ? String(data.status) : "1",
+          featured: Number(data.featured) === 1 ? 1 : 0
         };
         _this3.openDay = 0;
 
@@ -32395,6 +32403,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "floorPlanList",
@@ -32403,17 +32427,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       rows: []
     };
   },
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["listFloorPlan", "deleteFloorPlan", "loadings"])), {}, {
-    load: function load() {
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["listFloorPlan", "deleteFloorPlan", "toggleFloorPlanField", "loadings"])), {}, {
+    toggle: function toggle(row, field, on) {
       var _this = this;
+
+      var value = on ? 1 : 0;
+      this.toggleFloorPlanField({
+        id: row.id,
+        field: field,
+        value: value
+      }).then(function () {
+        row[field] = value;
+
+        _this.$success("Đã cập nhật");
+      })["catch"](function () {
+        return _this.$error("Cập nhật thất bại");
+      });
+    },
+    load: function load() {
+      var _this2 = this;
 
       this.loadings(true);
       this.listFloorPlan().then(function (response) {
-        _this.rows = response.data || [];
+        _this2.rows = response.data || [];
 
-        _this.loadings(false);
+        _this2.loadings(false);
       })["catch"](function () {
-        return _this.loadings(false);
+        return _this2.loadings(false);
       });
     },
     create: function create() {
@@ -32430,18 +32470,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     remove: function remove(row) {
-      var _this2 = this;
+      var _this3 = this;
 
       if (!window.confirm("Xóa bài “" + row.name + "”?")) return;
       this.loadings(true);
       this.deleteFloorPlan(row.id).then(function () {
-        _this2.$success("Đã xóa");
+        _this3.$success("Đã xóa");
 
-        _this2.load();
+        _this3.load();
       })["catch"](function () {
-        _this2.loadings(false);
+        _this3.loadings(false);
 
-        _this2.$error("Xóa thất bại");
+        _this3.$error("Xóa thất bại");
       });
     }
   }),
@@ -58300,7 +58340,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.fp-tight .form-group[data-v-3a17798a] { margin-bottom: 10px;\n}\n.fp-more[data-v-3a17798a] { margin-top: 2px;\n}\n.fp-more summary[data-v-3a17798a] {\r\n  cursor: pointer;\r\n  color: #6b7280;\r\n  font-size: 13px;\r\n  margin-bottom: 8px;\n}\n.fp-editor-head[data-v-3a17798a] {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 8px;\r\n  margin-bottom: 8px;\n}\n.fp-editor-head .card-title[data-v-3a17798a] { margin: 0 auto 0 0;\n}\n.fp-count[data-v-3a17798a] { color: #6b7280; font-size: 12px; font-weight: 500;\n}\n.fp-day[data-v-3a17798a] {\r\n  border: 1px solid #eee;\r\n  border-radius: 8px;\r\n  margin-bottom: 8px;\r\n  background: #fafafa;\n}\n.fp-day-bar[data-v-3a17798a] {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 8px;\r\n  padding: 8px 12px;\r\n  cursor: pointer;\n}\n.fp-caret[data-v-3a17798a] { color: #9ca3af; width: 12px;\n}\n.fp-day-bar strong[data-v-3a17798a] { font-size: 13px;\n}\n.fp-day-actions[data-v-3a17798a] { margin-left: auto; white-space: nowrap;\n}\n.fp-day-actions button[data-v-3a17798a] {\r\n  border: 0;\r\n  background: transparent;\r\n  color: #1a6ef5;\r\n  cursor: pointer;\r\n  margin-left: 8px;\r\n  padding: 0;\n}\n.fp-day-actions .is-danger[data-v-3a17798a] { color: #d33;\n}\n.fp-day-body[data-v-3a17798a] { padding: 0 12px 4px;\n}\n.fp-day-body textarea[data-v-3a17798a] { min-height: 88px; resize: vertical; overflow: hidden;\n}\r\n", ""]);
+exports.push([module.i, "\n.fp-tight .form-group[data-v-3a17798a] { margin-bottom: 10px;\n}\n.fp-more[data-v-3a17798a] { margin-top: 2px;\n}\n.fp-switch[data-v-3a17798a] { display: flex; align-items: center; height: 38px;\n}\n.fp-more summary[data-v-3a17798a] {\r\n  cursor: pointer;\r\n  color: #6b7280;\r\n  font-size: 13px;\r\n  margin-bottom: 8px;\n}\n.fp-editor-head[data-v-3a17798a] {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 8px;\r\n  margin-bottom: 8px;\n}\n.fp-editor-head .card-title[data-v-3a17798a] { margin: 0 auto 0 0;\n}\n.fp-count[data-v-3a17798a] { color: #6b7280; font-size: 12px; font-weight: 500;\n}\n.fp-day[data-v-3a17798a] {\r\n  border: 1px solid #eee;\r\n  border-radius: 8px;\r\n  margin-bottom: 8px;\r\n  background: #fafafa;\n}\n.fp-day-bar[data-v-3a17798a] {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 8px;\r\n  padding: 8px 12px;\r\n  cursor: pointer;\n}\n.fp-caret[data-v-3a17798a] { color: #9ca3af; width: 12px;\n}\n.fp-day-bar strong[data-v-3a17798a] { font-size: 13px;\n}\n.fp-day-actions[data-v-3a17798a] { margin-left: auto; white-space: nowrap;\n}\n.fp-day-actions button[data-v-3a17798a] {\r\n  border: 0;\r\n  background: transparent;\r\n  color: #1a6ef5;\r\n  cursor: pointer;\r\n  margin-left: 8px;\r\n  padding: 0;\n}\n.fp-day-actions .is-danger[data-v-3a17798a] { color: #d33;\n}\n.fp-day-body[data-v-3a17798a] { padding: 0 12px 4px;\n}\n.fp-day-body textarea[data-v-3a17798a] { min-height: 88px; resize: vertical; overflow: hidden;\n}\r\n", ""]);
 
 // exports
 
@@ -355770,7 +355810,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-4 form-group" },
+            { staticClass: "col-md-3 form-group" },
             [
               _c("label", [_vm._v("Tiêu đề")]),
               _vm._v(" "),
@@ -355820,7 +355860,33 @@ var render = function() {
               )
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-1 form-group" }, [
+            _c("label", [_vm._v("Nổi bật")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "fp-switch" },
+              [
+                _c("el-switch", {
+                  attrs: {
+                    "active-value": 1,
+                    "inactive-value": 0,
+                    "active-color": "#B28E4B"
+                  },
+                  model: {
+                    value: _vm.form.featured,
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, "featured", $$v)
+                    },
+                    expression: "form.featured"
+                  }
+                })
+              ],
+              1
+            )
+          ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
@@ -356308,7 +356374,7 @@ var render = function() {
                     [
                       !_vm.rows.length
                         ? _c("tr", [
-                            _c("td", { attrs: { colspan: "5" } }, [
+                            _c("td", { attrs: { colspan: "6" } }, [
                               _vm._v("Chưa có bài mặt bằng.")
                             ])
                           ])
@@ -356326,11 +356392,43 @@ var render = function() {
                           _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(row.sort))]),
                           _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              _vm._s(String(row.status) === "1" ? "Hiện" : "Ẩn")
-                            )
-                          ]),
+                          _c(
+                            "td",
+                            [
+                              _c("el-switch", {
+                                attrs: {
+                                  value: String(row.status) === "1",
+                                  "active-color": "#13ce66",
+                                  "inactive-color": "#ff4949"
+                                },
+                                on: {
+                                  change: function(val) {
+                                    return _vm.toggle(row, "status", val)
+                                  }
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            [
+                              _c("el-switch", {
+                                attrs: {
+                                  value: String(row.featured) === "1",
+                                  "active-color": "#B28E4B",
+                                  "inactive-color": "#C0CCDA"
+                                },
+                                on: {
+                                  change: function(val) {
+                                    return _vm.toggle(row, "featured", val)
+                                  }
+                                }
+                              })
+                            ],
+                            1
+                          ),
                           _vm._v(" "),
                           _c(
                             "td",
@@ -356396,7 +356494,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Thứ tự")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Trạng thái")]),
+        _c("th", [_vm._v("Hiển thị")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nổi bật")]),
         _vm._v(" "),
         _c("th")
       ])
@@ -413369,7 +413469,7 @@ var store = {
 /*!********************************************!*\
   !*** ./resources/js/store/main/actions.js ***!
   \********************************************/
-/*! exports provided: loadings, saveBanner, listBanner, savePartner, listPartner, listVideo, saveVideo, listAlbumAffter, saveAlbumAffter, listPrize, savePrize, getDataChart, getRevenue, getStatisticalBill, getTrafficPage, getOverviewDashboard, searchNavbar, saveFounder, listFounder, saveWhyChoose, listWhyChoose, saveProcessStep, listProcessStep, saveHomePrice, listHomePrice, saveHomeProject, listHomeProject, saveFloorPlanCategory, listFloorPlanCategory, listFloorPlan, getFloorPlan, saveFloorPlan, deleteFloorPlan, saveFaq, listFaq */
+/*! exports provided: loadings, saveBanner, listBanner, savePartner, listPartner, listVideo, saveVideo, listAlbumAffter, saveAlbumAffter, listPrize, savePrize, getDataChart, getRevenue, getStatisticalBill, getTrafficPage, getOverviewDashboard, searchNavbar, saveFounder, listFounder, saveWhyChoose, listWhyChoose, saveProcessStep, listProcessStep, saveHomePrice, listHomePrice, saveHomeProject, listHomeProject, saveFloorPlanCategory, listFloorPlanCategory, listFloorPlan, getFloorPlan, saveFloorPlan, toggleFloorPlanField, deleteFloorPlan, saveFaq, listFaq */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -413406,6 +413506,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listFloorPlan", function() { return listFloorPlan; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFloorPlan", function() { return getFloorPlan; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveFloorPlan", function() { return saveFloorPlan; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toggleFloorPlanField", function() { return toggleFloorPlanField; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteFloorPlan", function() { return deleteFloorPlan; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveFaq", function() { return saveFaq; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listFaq", function() { return listFaq; });
@@ -413727,8 +413828,21 @@ var saveFloorPlan = function saveFloorPlan(_ref31, opt) {
     });
   });
 };
-var deleteFloorPlan = function deleteFloorPlan(_ref32, id) {
+var toggleFloorPlanField = function toggleFloorPlanField(_ref32, opt) {
   var commit = _ref32.commit;
+  return new Promise(function (resolve, reject) {
+    _core_plugins_http__WEBPACK_IMPORTED_MODULE_1__["HTTP"].post('/api/website/floor-plan-toggle/' + opt.id, {
+      field: opt.field,
+      value: opt.value
+    }).then(function (response) {
+      return resolve(response.data);
+    })["catch"](function (error) {
+      return reject(error);
+    });
+  });
+};
+var deleteFloorPlan = function deleteFloorPlan(_ref33, id) {
+  var commit = _ref33.commit;
   return new Promise(function (resolve, reject) {
     _core_plugins_http__WEBPACK_IMPORTED_MODULE_1__["HTTP"].post('/api/website/floor-plan-delete/' + id).then(function (response) {
       return resolve(response.data);
@@ -413737,8 +413851,8 @@ var deleteFloorPlan = function deleteFloorPlan(_ref32, id) {
     });
   });
 };
-var saveFaq = function saveFaq(_ref33, opt) {
-  var commit = _ref33.commit;
+var saveFaq = function saveFaq(_ref34, opt) {
+  var commit = _ref34.commit;
   return new Promise(function (resolve, reject) {
     _core_plugins_http__WEBPACK_IMPORTED_MODULE_1__["HTTP"].post('/api/website/faq', opt).then(function (response) {
       return resolve(response.data);
@@ -413747,8 +413861,8 @@ var saveFaq = function saveFaq(_ref33, opt) {
     });
   });
 };
-var listFaq = function listFaq(_ref34, opt) {
-  var commit = _ref34.commit;
+var listFaq = function listFaq(_ref35, opt) {
+  var commit = _ref35.commit;
   return new Promise(function (resolve, reject) {
     _core_plugins_http__WEBPACK_IMPORTED_MODULE_1__["HTTP"].get('/api/website/list-faq').then(function (response) {
       return resolve(response.data);

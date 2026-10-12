@@ -13,7 +13,7 @@ class FloorPlanController extends Controller
         $data = FloorPlan::with('category:id,name')
             ->orderBy('sort')
             ->orderBy('id')
-            ->get(['id', 'category_id', 'name', 'slug', 'building_name', 'sort', 'status']);
+            ->get(['id', 'category_id', 'name', 'slug', 'building_name', 'sort', 'status', 'featured']);
 
         return response()->json(['data' => $data, 'message' => 'success'], 200);
     }
@@ -70,9 +70,28 @@ class FloorPlanController extends Controller
         $model->journal = $this->cleanJournal($request->input('journal', []));
         $model->sort = $request->input('sort', 0);
         $model->status = $request->input('status', 1);
+        $model->featured = (int) $request->input('featured', 0) ? 1 : 0;
         $model->save();
 
         return response()->json(['data' => $model, 'message' => 'success'], 200);
+    }
+
+    public function toggleField(Request $request, $id)
+    {
+        $field = $request->input('field');
+        if (!in_array($field, ['status', 'featured'], true)) {
+            return response()->json(['message' => 'Trường không hợp lệ'], 422);
+        }
+
+        $model = FloorPlan::find($id);
+        if (!$model) {
+            return response()->json(['message' => 'Không tìm thấy bài mặt bằng'], 404);
+        }
+
+        $model->{$field} = (int) $request->input('value') ? 1 : 0;
+        $model->save();
+
+        return response()->json(['data' => $model->only(['id', $field]), 'message' => 'success'], 200);
     }
 
     public function delete($id)

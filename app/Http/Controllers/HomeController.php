@@ -24,6 +24,7 @@ use App\models\website\HomePriceItem;
 use App\models\website\HomePriceMeta;
 use App\models\website\HomeProjectMeta;
 use App\models\website\HomeProjectSpec;
+use App\models\website\FloorPlan;
 
 class HomeController extends Controller
 {
@@ -63,7 +64,34 @@ class HomeController extends Controller
             ->with(['cate:id,slug,name'])
             ->inRandomOrder()->limit(18)->get();
         $this->attachVariantPriceRange($data['homePro']);
+        $data['featuredPlans'] = $this->featuredFloorPlans();
         return view('home',$data);
+    }
+
+    private function featuredFloorPlans()
+    {
+        return FloorPlan::with('category:id,name')
+            ->where('status', 1)
+            ->where('featured', 1)
+            ->orderBy('sort')
+            ->orderBy('id')
+            ->limit(6)
+            ->get(['id', 'category_id', 'name', 'slug', 'title', 'intro', 'content', 'journal'])
+            ->map(function ($plan) {
+                preg_match('/<img[^>]+src=["\']([^"\']+)["\']/i', (string) $plan->content, $match);
+                $journal = is_array($plan->journal) ? $plan->journal : [];
+
+                return (object) [
+                    'name' => $plan->name,
+                    'code' => trim((string) preg_replace('/^layout\s+/iu', '', $plan->name)),
+                    'zone' => optional($plan->category)->name,
+                    'intro' => $plan->intro,
+                    'image' => $match[1] ?? '',
+                    'journalDays' => count($journal),
+                    'url' => route('floorPlan', $plan->slug),
+                    'journalUrl' => route('floorPlanJournal', $plan->slug),
+                ];
+            });
     }
 
     private function attachVariantPriceRange($products): void

@@ -61,7 +61,7 @@
                    </label>
                    <button type="submit" class="hs-submit">Tìm kiếm <span class="arr">&rarr;</span></button>
                </form>
-               <div class="hero-stats">
+               {{-- <div class="hero-stats">
                    <div class="st">
                        <div class="v">43,91<small> ha</small></div>
                        <div class="l">Tổng diện tích</div>
@@ -78,14 +78,14 @@
                        <div class="v">Sổ hồng</div>
                        <div class="l">Pháp lý rõ ràng</div>
                    </div>
-               </div>
+               </div> --}}
            </div>
        </div>
    </section>
    @endif
 
    <!-- ===================== CREDENTIAL BAND ===================== -->
-   <section class="creds">
+   {{-- <section class="creds">
        <div class="hp-wrap">
            <div class="cd">
                <div class="k">Chủ đầu tư</div>
@@ -108,23 +108,64 @@
                <div class="v">Căn hộ · Penthouse · Biệt thự</div>
            </div>
        </div>
-   </section>
+   </section> --}}
 
    <!-- ===================== LISTINGS ===================== -->
    <section class="hp-section listings" id="listings">
        <div class="hp-wrap">
-           <div class="section-head">
+           {{-- <div class="section-head">
                <div class="eyebrow"><span class="dash"></span>Giỏ hàng bán · Tháng {{ now()->month }}, {{ now()->year }}</div>
                <h2>Tổng hợp căn hộ đang rao bán</h2>
                <div class="rule"></div>
                <p>Chọn căn hộ theo số phòng ngủ. Mỗi căn được xác thực pháp lý và cập nhật giá mỗi ngày.</p>
-           </div>
+           </div> --}}
 
 
            @include('home.mua-listings')
 
        </div><!-- /.hp-wrap -->
    </section>
+   <!-- ===================== MẶT BẰNG NỔI BẬT ===================== -->
+   @if (($featuredPlans ?? collect())->isNotEmpty())
+   <section class="hp-section info fplans" id="mat-bang-noi-bat">
+       <div class="hp-wrap">
+           <div class="section-head">
+               <div class="eyebrow"><span class="dash"></span>Mặt bằng nổi bật</div>
+               <h2>Layout căn hộ được quan tâm nhiều nhất</h2>
+               <div class="rule"></div>
+               <p>Xem nhanh mặt bằng tòa, layout từng loại căn và nhật ký giỏ hàng cập nhật mỗi ngày.</p>
+           </div>
+           <div class="fplan-grid">
+               @foreach ($featuredPlans as $fp)
+               <article class="fplan-card reveal">
+                   <a class="fplan-media{{ $fp->image === '' ? ' is-blank' : '' }}" href="{{ $fp->url }}">
+                       @if ($fp->image !== '')
+                       <img src="{{ $fp->image }}" alt="{{ $fp->name }}" loading="lazy">
+                       @else
+                       <span class="fplan-code">{{ $fp->code }}</span>
+                       @endif
+                       @if (!empty($fp->zone))
+                       <span class="fplan-zone">{{ $fp->zone }}</span>
+                       @endif
+                   </a>
+                   <div class="fplan-body">
+                       <h3><a href="{{ $fp->url }}">{{ $fp->name }}</a></h3>
+                       @if (!empty($fp->intro))
+                       <p>{{ $fp->intro }}</p>
+                       @endif
+                       <div class="fplan-foot">
+                           <a class="link-more" href="{{ $fp->url }}">Xem mặt bằng <span class="arr">&rarr;</span></a>
+                           @if ($fp->journalDays)
+                           <a class="fplan-journal" href="{{ $fp->journalUrl }}">Nhật ký · {{ $fp->journalDays }} ngày</a>
+                           @endif
+                       </div>
+                   </div>
+               </article>
+               @endforeach
+           </div>
+       </div>
+   </section>
+   @endif
 
    <!-- ===================== SUPPORT CTA ===================== -->
    <section class="hp-section support" id="lien-he">

@@ -15,7 +15,7 @@
             <label>Tên trên menu</label>
             <vs-input class="w-100" v-model="form.name" placeholder="Layout Central 1" @input="onPageName" />
           </div>
-          <div class="col-md-4 form-group">
+          <div class="col-md-3 form-group">
             <label>Tiêu đề</label>
             <vs-input class="w-100" v-model="form.title" @input="form.titleAuto = false" />
           </div>
@@ -25,6 +25,12 @@
               <vs-select-item value="1" text="Hiện" />
               <vs-select-item value="0" text="Ẩn" />
             </vs-select>
+          </div>
+          <div class="col-md-1 form-group">
+            <label>Nổi bật</label>
+            <div class="fp-switch">
+              <el-switch v-model="form.featured" :active-value="1" :inactive-value="0" active-color="#B28E4B" />
+            </div>
           </div>
         </div>
         <div class="form-group">
@@ -262,6 +268,7 @@ export default {
         journal: [blankJournalDay()],
         sort: 1,
         status: "1",
+        featured: 0,
       };
     },
     onPageName() {
@@ -417,6 +424,7 @@ export default {
             journal: this.hydrateJournal(data.journal),
             sort: data.sort != null ? String(data.sort) : "0",
             status: data.status != null ? String(data.status) : "1",
+            featured: Number(data.featured) === 1 ? 1 : 0,
           };
           this.openDay = 0;
           this.growOpen();
@@ -487,6 +495,7 @@ export default {
 <style scoped>
 .fp-tight .form-group { margin-bottom: 10px; }
 .fp-more { margin-top: 2px; }
+.fp-switch { display: flex; align-items: center; height: 38px; }
 .fp-more summary {
   cursor: pointer;
   color: #6b7280;

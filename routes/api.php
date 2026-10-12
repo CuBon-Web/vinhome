@@ -242,6 +242,7 @@ Route::group(['namespace'=>'Api','middleware'=>'auth:api'],function(){
 		Route::get('floor-plan/{id}','FloorPlanController@edit')->middleware('rbac.permission:website.view');
 		Route::post('floor-plan','FloorPlanController@createOrUpdate')->middleware('rbac.permission:website.update');
 		Route::post('floor-plan-delete/{id}','FloorPlanController@delete')->middleware('rbac.permission:website.update');
+		Route::post('floor-plan-toggle/{id}','FloorPlanController@toggleField')->middleware('rbac.permission:website.update');
 	});
 	Route::group(['prefix'=>'customer','namespace'=>'Customer'], function(){
 		Route::post('list','CustomerController@list')->middleware('rbac.permission:customer.view');

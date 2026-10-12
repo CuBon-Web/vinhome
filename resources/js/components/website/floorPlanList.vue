@@ -13,19 +13,35 @@
                     <th>Tên trên menu</th>
                     <th>Danh mục</th>
                     <th>Thứ tự</th>
-                    <th>Trạng thái</th>
+                    <th>Hiển thị</th>
+                    <th>Nổi bật</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr v-if="!rows.length">
-                    <td colspan="5">Chưa có bài mặt bằng.</td>
+                    <td colspan="6">Chưa có bài mặt bằng.</td>
                   </tr>
                   <tr v-for="row in rows" :key="row.id">
                     <td>{{ row.name }}</td>
                     <td>{{ row.category ? row.category.name : "—" }}</td>
                     <td>{{ row.sort }}</td>
-                    <td>{{ String(row.status) === "1" ? "Hiện" : "Ẩn" }}</td>
+                    <td>
+                      <el-switch
+                        :value="String(row.status) === '1'"
+                        active-color="#13ce66"
+                        inactive-color="#ff4949"
+                        @change="val => toggle(row, 'status', val)"
+                      />
+                    </td>
+                    <td>
+                      <el-switch
+                        :value="String(row.featured) === '1'"
+                        active-color="#B28E4B"
+                        inactive-color="#C0CCDA"
+                        @change="val => toggle(row, 'featured', val)"
+                      />
+                    </td>
                     <td class="text-right">
                       <vs-button size="small" @click="edit(row.id)">Sửa</vs-button>
                       <vs-button size="small" color="danger" type="border" @click="remove(row)">Xóa</vs-button>
@@ -50,7 +66,16 @@ export default {
     return { rows: [] };
   },
   methods: {
-    ...mapActions(["listFloorPlan", "deleteFloorPlan", "loadings"]),
+    ...mapActions(["listFloorPlan", "deleteFloorPlan", "toggleFloorPlanField", "loadings"]),
+    toggle(row, field, on) {
+      const value = on ? 1 : 0;
+      this.toggleFloorPlanField({ id: row.id, field, value })
+        .then(() => {
+          row[field] = value;
+          this.$success("Đã cập nhật");
+        })
+        .catch(() => this.$error("Cập nhật thất bại"));
+    },
     load() {
       this.loadings(true);
       this.listFloorPlan()

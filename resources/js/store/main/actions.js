@@ -295,6 +295,16 @@ export const saveFloorPlan = ({commit}, opt) => {
     });
 };
 
+export const toggleFloorPlanField = ({commit}, opt) => {
+    return new Promise((resolve, reject) => {
+        HTTP.post('/api/website/floor-plan-toggle/' + opt.id, { field: opt.field, value: opt.value }).then(response => {
+            return resolve(response.data);
+        }).catch(error => {
+            return reject(error);
+        });
+    });
+};
+
 export const deleteFloorPlan = ({commit}, id) => {
     return new Promise((resolve, reject) => {
         HTTP.post('/api/website/floor-plan-delete/' + id).then(response => {
