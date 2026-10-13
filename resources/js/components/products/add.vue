@@ -567,6 +567,8 @@ export default {
         roleid:[]
       },
       type_two:[],
+      loadedCategory: 0,
+      loadedTypeCate: 0,
       showLang: {
         title: false,
         content: false,
@@ -1415,15 +1417,19 @@ export default {
       }
     },
     findCategoryType() {
+      const category = Number(this.objData.category) || 0;
+      if (category === this.loadedCategory) return;
+      this.loadedCategory = category;
+      this.loadedTypeCate = 0;
       this.objData.type_cate = 0;
       this.objData.type_two = 0;
       this.type_two = [];
-      if (!this.objData.category || Number(this.objData.category) === 0) {
+      if (!category) {
         this.type_cate = [];
         this.refreshTagsByCategory();
         return;
       }
-      this.findTypeCate(this.objData.category).then((response) => {
+      this.findTypeCate(category).then((response) => {
         this.type_cate = Array.isArray(response.data) ? response.data : [];
       });
       this.refreshTagsByCategory();
@@ -1442,12 +1448,15 @@ export default {
         .then(() => this.refreshTagsByCategory());
     },
     findCategoryTypeTwo() {
+      const typeCate = Number(this.objData.type_cate) || 0;
+      if (typeCate === this.loadedTypeCate) return;
+      this.loadedTypeCate = typeCate;
       this.objData.type_two = 0;
-      if (!this.objData.type_cate || Number(this.objData.type_cate) === 0) {
+      if (!typeCate) {
         this.type_two = [];
         return;
       }
-      this.findTypeCateTwo(this.objData.type_cate).then((response) => {
+      this.findTypeCateTwo(typeCate).then((response) => {
         this.type_two = Array.isArray(response.data) ? response.data : [];
       });
     },
