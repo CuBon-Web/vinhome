@@ -63,6 +63,7 @@
           <h4 class="card-title">Bài viết</h4>
           <vs-button size="small" type="border" @click="insertOverview">Tổng quan tòa</vs-button>
           <vs-button size="small" type="border" @click="insertLayout">Layout căn</vs-button>
+          <vs-button size="small" type="border" @click="insertFloorPanel">Mặt bằng tầng</vs-button>
         </div>
         <TinyMce ref="articleEditor" v-model="form.content" :height="420" :insert-menus="layoutMenus" />
       </div>
@@ -185,9 +186,53 @@ const COLS_BLOCK = `
 </tbody>
 </table>`;
 
+const FLOOR_PANEL_BLOCK = `
+<h2 style="text-align: center;">Mặt bằng tầng 22</h2>
+<table class="fp-floor">
+<tbody>
+<tr>
+<td class="fp-floor-media">
+<img src="" alt="Mặt bằng điển hình tầng 22" />
+<p>Mặt bằng tầng 22</p>
+</td>
+<td class="fp-floor-panels">
+<details class="fp-acc" open>
+<summary>Căn hộ 01, 02, 08, 09, 10</summary>
+<div class="fp-acc-body">
+<img src="" alt="Layout căn hộ 01, 02, 08, 09, 10" />
+<p>Layout căn hộ 01, 02, 08, 09, 10 tầng 22 tòa Landmark 81</p>
+</div>
+</details>
+<details class="fp-acc">
+<summary>Căn hộ Sky Villa 03, 04</summary>
+<div class="fp-acc-body">
+<img src="" alt="Layout căn hộ Sky Villa 03, 04" />
+<p>Layout căn hộ Sky Villa 03, 04 tầng 22 tòa Landmark 81</p>
+</div>
+</details>
+<details class="fp-acc">
+<summary>Căn hộ 05, Sky Villa 06</summary>
+<div class="fp-acc-body">
+<img src="" alt="Layout căn hộ 05, Sky Villa 06" />
+<p>Layout căn hộ 05, Sky Villa 06 tầng 22 tòa Landmark 81</p>
+</div>
+</details>
+<details class="fp-acc">
+<summary>Căn hộ Sky Villa 07</summary>
+<div class="fp-acc-body">
+<img src="" alt="Layout căn hộ Sky Villa 07" />
+<p>Layout căn hộ Sky Villa 07 tầng 22 tòa Landmark 81</p>
+</div>
+</details>
+</td>
+</tr>
+</tbody>
+</table>`;
+
 const layoutMenus = [
   { text: "Tổng quan tòa", html: OVERVIEW_BLOCK },
   { text: "Layout một căn", html: LAYOUT_BLOCK },
+  { text: "Mặt bằng tầng + dropdown", html: FLOOR_PANEL_BLOCK },
   { text: "Hai cột trống", html: COLS_BLOCK },
   { text: "Vị trí nhật ký", html: "<p>[[nhat-ky]]</p>" },
 ];
@@ -281,6 +326,9 @@ export default {
     },
     insertLayout() {
       this.$refs.articleEditor.insertHtml(LAYOUT_BLOCK);
+    },
+    insertFloorPanel() {
+      this.$refs.articleEditor.insertHtml(FLOOR_PANEL_BLOCK);
     },
     addJournalDay() {
       const latest = this.form.journal[0] || {};

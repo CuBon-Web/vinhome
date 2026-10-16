@@ -5438,7 +5438,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var FP_COLUMN_STYLE = "\n  body { font-family: \"Be Vietnam Pro\", sans-serif; font-size: 15px; }\n  table.fp-layout, table.fp-overview, table.fp-cols { width: 100%; border-collapse: collapse; margin: 10px 0; }\n  table.fp-layout td, table.fp-overview td, table.fp-cols td { width: 50%; vertical-align: top; border: 1px dashed #d9cbb3; padding: 10px; }\n  table.fp-layout img, table.fp-overview img, table.fp-cols img { max-width: 100%; height: auto; }\n";
+var FP_COLUMN_STYLE = "\n  body { font-family: \"Be Vietnam Pro\", sans-serif; font-size: 15px; }\n  table.fp-layout, table.fp-overview, table.fp-cols, table.fp-floor { width: 100%; border-collapse: collapse; margin: 10px 0; }\n  table.fp-layout td, table.fp-overview td, table.fp-cols td, table.fp-floor td { width: 50%; vertical-align: top; border: 1px dashed #d9cbb3; padding: 10px; }\n  table.fp-layout img, table.fp-overview img, table.fp-cols img, table.fp-floor img { max-width: 100%; height: auto; }\n  table.fp-floor td.fp-floor-media { width: 58%; }\n  table.fp-floor td.fp-floor-panels { width: 42%; }\n  .fp-acc { border: 1px solid #e7e1d8; border-radius: 10px; margin: 0 0 10px; background: #fff; overflow: hidden; }\n  .fp-acc summary { list-style: none; cursor: pointer; padding: 12px 40px 12px 14px; position: relative; font-weight: 600; font-size: 14px; color: #1c1a16; }\n  .fp-acc summary::-webkit-details-marker { display: none; }\n  .fp-acc summary::after { content: \"+\"; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 18px; color: #8c6e36; font-weight: 400; }\n  .fp-acc[open] summary::after { content: \"\u2013\"; }\n  .fp-acc-body { padding: 0 14px 14px; border-top: 1px solid #f0ebe3; }\n  .fp-acc-body img { display: block; width: 100%; margin-top: 12px; border: 1px solid #ece6dc; border-radius: 10px; }\n  .fp-acc-body p { font-size: 13px; color: #9a9186; font-style: italic; text-align: center; margin: 10px 0 0; }\n";
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "tinymce",
   components: {
@@ -5479,6 +5479,8 @@ var FP_COLUMN_STYLE = "\n  body { font-family: \"Be Vietnam Pro\", sans-serif; f
         toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
         toolbar2: "print preview media | forecolor backcolor emoticons" + (this.insertMenus.length ? " | fpcolumns" : ""),
         content_style: this.insertMenus.length ? FP_COLUMN_STYLE : "",
+        extended_valid_elements: "details[class|open],summary,div[class|style]",
+        valid_children: "+body[style],+td[details|div|summary],+details[summary|div|#text]",
         image_advtab: true,
         height: this.height,
         images_upload_handler: this.images_upload_handler,
@@ -31288,17 +31290,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 var OVERVIEW_BLOCK = "\n<table class=\"fp-overview\">\n<tbody>\n<tr>\n<td><img src=\"\" alt=\"M\u1EB7t b\u1EB1ng t\u1ED5ng th\u1EC3\" /><p>Layout Landmark 3 (Layout L2)</p></td>\n<td>\n<h2>Layout Landmark 3</h2>\n<ul>\n<li>S\u1ED1 t\u1EA7ng: 50 t\u1EA7ng</li>\n<li>S\u1ED1 l\u01B0\u1EE3ng c\u0103n h\u1ED9/s\xE0n: 13 c\u0103n h\u1ED9</li>\n<li>S\u1ED1 l\u01B0\u1EE3ng thang m\xE1y/to\xE0: 12 thang m\xE1y t\u1ED1c \u0111\u1ED9 cao</li>\n<li>S\u1ED1 l\u01B0\u1EE3ng thang tho\xE1t hi\u1EC3m/to\xE0: 2 thang tho\xE1t hi\u1EC3m v\u1EDBi c\u1EEDa ch\u1ED1ng ch\xE1y</li>\n<li>Chi\u1EC1u r\u1ED9ng h\xE0nh lang: 2,7m</li>\n<li>H\u1EA7m \u0111\u1EC3 xe th\xF4ng minh v\u1EDBi 2 t\u1EA7ng</li>\n<li>C\u0103n h\u1ED9 hi\u1EC7n \u0111\u1EA1i t\u1EEB 1, 2, 3 ph\xF2ng ng\u1EE7</li>\n<li>C\u0103n h\u1ED9 nh\xE0 ph\u1ED1 th\u01B0\u01A1ng m\u1EA1i th\xF4ng t\u1EA7ng (duplex shophouse)</li>\n</ul>\n<p>N\u0103m kh\u1EDFi c\xF4ng: 2015</p>\n<p>N\u0103m ho\xE0n th\xE0nh: 2017</p>\n</td>\n</tr>\n</tbody>\n</table>";
 var LAYOUT_BLOCK = "\n<table class=\"fp-layout\">\n<tbody>\n<tr>\n<td><img src=\"\" alt=\"Layout L3-01\" /><p>Layout L3-01</p></td>\n<td>\n<h3>Th\xF4ng tin Layout L3-01</h3>\n<p>3PN, 2WC, 1 ban c\xF4ng</p>\n<p>Di\u1EC7n t\xEDch tim t\u01B0\u1EDDng: 106,1 m\xB2</p>\n<p>Di\u1EC7n t\xEDch th\xF4ng th\u1EE7y: 98,7 m\xB2</p>\n<p>H\u01B0\u1EDBng c\u1EEDa: \u0110\xF4ng B\u1EAFc</p>\n<p>H\u01B0\u1EDBng ban c\xF4ng: \u0110\xF4ng Nam</p>\n<p>View: S\xF4ng*, c\xF4ng vi\xEAn*, th\xE0nh ph\u1ED1*, Landmark 81*</p>\n</td>\n</tr>\n</tbody>\n</table>";
 var COLS_BLOCK = "\n<table class=\"fp-cols\">\n<tbody>\n<tr>\n<td><p>C\u1ED9t tr\xE1i</p></td>\n<td><p>C\u1ED9t ph\u1EA3i</p></td>\n</tr>\n</tbody>\n</table>";
+var FLOOR_PANEL_BLOCK = "\n<h2 style=\"text-align: center;\">M\u1EB7t b\u1EB1ng t\u1EA7ng 22</h2>\n<table class=\"fp-floor\">\n<tbody>\n<tr>\n<td class=\"fp-floor-media\">\n<img src=\"\" alt=\"M\u1EB7t b\u1EB1ng \u0111i\u1EC3n h\xECnh t\u1EA7ng 22\" />\n<p>M\u1EB7t b\u1EB1ng t\u1EA7ng 22</p>\n</td>\n<td class=\"fp-floor-panels\">\n<details class=\"fp-acc\" open>\n<summary>C\u0103n h\u1ED9 01, 02, 08, 09, 10</summary>\n<div class=\"fp-acc-body\">\n<img src=\"\" alt=\"Layout c\u0103n h\u1ED9 01, 02, 08, 09, 10\" />\n<p>Layout c\u0103n h\u1ED9 01, 02, 08, 09, 10 t\u1EA7ng 22 t\xF2a Landmark 81</p>\n</div>\n</details>\n<details class=\"fp-acc\">\n<summary>C\u0103n h\u1ED9 Sky Villa 03, 04</summary>\n<div class=\"fp-acc-body\">\n<img src=\"\" alt=\"Layout c\u0103n h\u1ED9 Sky Villa 03, 04\" />\n<p>Layout c\u0103n h\u1ED9 Sky Villa 03, 04 t\u1EA7ng 22 t\xF2a Landmark 81</p>\n</div>\n</details>\n<details class=\"fp-acc\">\n<summary>C\u0103n h\u1ED9 05, Sky Villa 06</summary>\n<div class=\"fp-acc-body\">\n<img src=\"\" alt=\"Layout c\u0103n h\u1ED9 05, Sky Villa 06\" />\n<p>Layout c\u0103n h\u1ED9 05, Sky Villa 06 t\u1EA7ng 22 t\xF2a Landmark 81</p>\n</div>\n</details>\n<details class=\"fp-acc\">\n<summary>C\u0103n h\u1ED9 Sky Villa 07</summary>\n<div class=\"fp-acc-body\">\n<img src=\"\" alt=\"Layout c\u0103n h\u1ED9 Sky Villa 07\" />\n<p>Layout c\u0103n h\u1ED9 Sky Villa 07 t\u1EA7ng 22 t\xF2a Landmark 81</p>\n</div>\n</details>\n</td>\n</tr>\n</tbody>\n</table>";
 var layoutMenus = [{
   text: "Tổng quan tòa",
   html: OVERVIEW_BLOCK
 }, {
   text: "Layout một căn",
   html: LAYOUT_BLOCK
+}, {
+  text: "Mặt bằng tầng + dropdown",
+  html: FLOOR_PANEL_BLOCK
 }, {
   text: "Hai cột trống",
   html: COLS_BLOCK
@@ -31397,6 +31404,9 @@ function toSlug(value) {
     },
     insertLayout: function insertLayout() {
       this.$refs.articleEditor.insertHtml(LAYOUT_BLOCK);
+    },
+    insertFloorPanel: function insertFloorPanel() {
+      this.$refs.articleEditor.insertHtml(FLOOR_PANEL_BLOCK);
     },
     addJournalDay: function addJournalDay() {
       var latest = this.form.journal[0] || {};
@@ -354182,6 +354192,15 @@ var render = function() {
                   on: { click: _vm.insertLayout }
                 },
                 [_vm._v("Layout căn")]
+              ),
+              _vm._v(" "),
+              _c(
+                "vs-button",
+                {
+                  attrs: { size: "small", type: "border" },
+                  on: { click: _vm.insertFloorPanel }
+                },
+                [_vm._v("Mặt bằng tầng")]
               )
             ],
             1

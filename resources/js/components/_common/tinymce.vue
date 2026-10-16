@@ -89,9 +89,19 @@ import Editor from "@tinymce/tinymce-vue";
 
 const FP_COLUMN_STYLE = `
   body { font-family: "Be Vietnam Pro", sans-serif; font-size: 15px; }
-  table.fp-layout, table.fp-overview, table.fp-cols { width: 100%; border-collapse: collapse; margin: 10px 0; }
-  table.fp-layout td, table.fp-overview td, table.fp-cols td { width: 50%; vertical-align: top; border: 1px dashed #d9cbb3; padding: 10px; }
-  table.fp-layout img, table.fp-overview img, table.fp-cols img { max-width: 100%; height: auto; }
+  table.fp-layout, table.fp-overview, table.fp-cols, table.fp-floor { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  table.fp-layout td, table.fp-overview td, table.fp-cols td, table.fp-floor td { width: 50%; vertical-align: top; border: 1px dashed #d9cbb3; padding: 10px; }
+  table.fp-layout img, table.fp-overview img, table.fp-cols img, table.fp-floor img { max-width: 100%; height: auto; }
+  table.fp-floor td.fp-floor-media { width: 58%; }
+  table.fp-floor td.fp-floor-panels { width: 42%; }
+  .fp-acc { border: 1px solid #e7e1d8; border-radius: 10px; margin: 0 0 10px; background: #fff; overflow: hidden; }
+  .fp-acc summary { list-style: none; cursor: pointer; padding: 12px 40px 12px 14px; position: relative; font-weight: 600; font-size: 14px; color: #1c1a16; }
+  .fp-acc summary::-webkit-details-marker { display: none; }
+  .fp-acc summary::after { content: "+"; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 18px; color: #8c6e36; font-weight: 400; }
+  .fp-acc[open] summary::after { content: "–"; }
+  .fp-acc-body { padding: 0 14px 14px; border-top: 1px solid #f0ebe3; }
+  .fp-acc-body img { display: block; width: 100%; margin-top: 12px; border: 1px solid #ece6dc; border-radius: 10px; }
+  .fp-acc-body p { font-size: 13px; color: #9a9186; font-style: italic; text-align: center; margin: 10px 0 0; }
 `;
 
 export default {
@@ -136,6 +146,8 @@ export default {
           "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
         toolbar2: "print preview media | forecolor backcolor emoticons" + (this.insertMenus.length ? " | fpcolumns" : ""),
         content_style: this.insertMenus.length ? FP_COLUMN_STYLE : "",
+        extended_valid_elements: "details[class|open],summary,div[class|style]",
+        valid_children: "+body[style],+td[details|div|summary],+details[summary|div|#text]",
         image_advtab: true,
         height: this.height,
         images_upload_handler: this.images_upload_handler,
