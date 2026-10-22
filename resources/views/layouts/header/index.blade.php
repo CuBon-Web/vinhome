@@ -80,6 +80,11 @@
                    <li>
                        <a href="{{ route('consignment') }}">Ký gửi</a>
                    </li>
+                   @foreach ($blogCate as $item)
+                   <li>
+                    <a href="{{ route('listCateBlog', ['slug' => $item->slug]) }}">{{ languageName($item->name) }}</a>
+                </li>
+                   @endforeach
                </ul>
            </nav>
            <div class="bvh-nav-tools">

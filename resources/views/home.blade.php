@@ -25,8 +25,25 @@
        $heroBanner = isset($banner) ? $banner->first() : null;
        $heroTitle = $heroBanner ? trim((string) $heroBanner->title) : '';
        $heroDesc = $heroBanner ? trim((string) $heroBanner->description) : '';
-       $heroLink = $heroBanner ? trim((string) $heroBanner->link) : '';
        $heroImage = $heroBanner ? trim((string) $heroBanner->image) : '';
+       $heroHints = [];
+       $heroHintRaw = $heroBanner ? json_decode((string) $heroBanner->link, true) : null;
+       if (is_array($heroHintRaw)) {
+           foreach ($heroHintRaw as $hintRow) {
+               if (!is_array($hintRow)) {
+                   continue;
+               }
+               $hintText = trim((string) ($hintRow['text'] ?? ''));
+               $hintUrl = trim((string) ($hintRow['link'] ?? ''));
+               if ($hintText === '' && $hintUrl === '') {
+                   continue;
+               }
+               if ($hintText === '') {
+                   $hintText = $hintUrl;
+               }
+               $heroHints[] = ['text' => $hintText, 'link' => $hintUrl];
+           }
+       }
    @endphp
    @if ($heroBanner && ($heroImage !== '' || $heroTitle !== '' || $heroDesc !== ''))
    <section class="hero">
@@ -37,30 +54,88 @@
        </div>
        <div class="hp-wrap">
            <div class="hero-inner">
-            <div class="eyebrow eyebrow-light"><span class="dash"></span>Vinhomes Central Park · Bình Thạnh
-            </div>
-               {{-- @if ($heroTitle !== '')
+               @php
+                   $heroKicker = strip_tags($heroDesc);
+                   do {
+                       $heroKickerDecoded = html_entity_decode($heroKicker, ENT_QUOTES, 'UTF-8');
+                       if ($heroKickerDecoded === $heroKicker) {
+                           break;
+                       }
+                       $heroKicker = $heroKickerDecoded;
+                   } while (true);
+                   $heroKicker = trim(preg_replace('/\s+/u', ' ', $heroKicker));
+               @endphp
+               @if ($heroKicker !== '')
+               <p class="hero-kicker">{{ $heroKicker }}</p>
+               @else
+               <div class="eyebrow eyebrow-light"><span class="dash"></span>Vinhomes Central Park · Bình Thạnh</div>
+               @endif
+               @if ($heroTitle !== '')
                <h1 class="serif">{!! $heroTitle !!}</h1>
                @endif
-               @if ($heroDesc !== '')
-               <div class="hero-sub">{!! $heroDesc !!}</div>
-               @endif --}}
+               @php
+                   $heroCates = collect($categoryhome ?? [])->values();
+                   $heroActive = optional($heroCates->first())->slug ?? '';
+                   $heroCount = \App\models\product\Product::where('status', 1)->where('consignment', 0)->count();
+               @endphp
                <form class="hero-search" action="{{ route('search_result') }}" method="get" role="search">
-                   <label class="hs-field hs-cate">
-                       <span class="hs-label">Danh mục</span>
-                       <select name="cate">
-                           <option value="">Tất cả</option>
-                           @foreach ($categoryhome ?? [] as $searchCate)
-                           <option value="{{ $searchCate->slug }}">{{ languageName($searchCate->name) }}</option>
-                           @endforeach
-                       </select>
-                   </label>
-                   <label class="hs-field hs-keyword">
-                       <span class="hs-label">Từ khóa</span>
-                       <input type="text" name="keyword" placeholder="Tòa, số phòng ngủ, view..." autocomplete="off">
-                   </label>
-                   <button type="submit" class="hs-submit">Tìm kiếm <span class="arr">&rarr;</span></button>
+                   <div class="hs-tabs" role="tablist">
+                       @foreach ($heroCates as $searchCate)
+                       <button type="button" class="hs-tab{{ $loop->first ? ' is-on' : '' }}" role="tab" data-cate="{{ $searchCate->slug }}" aria-selected="{{ $loop->first ? 'true' : 'false' }}">{{ languageName($searchCate->name) }}</button>
+                       @endforeach
+                   </div>
+                   <div class="hs-bar">
+                       <input type="hidden" name="cate" value="{{ $heroActive }}">
+                       <label class="hs-keyword">
+                           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5" stroke-linecap="round"/></svg>
+                           <input type="text" name="keyword" placeholder="Tìm kiếm căn hộ, tòa nhà, view..." autocomplete="off">
+                       </label>
+                       <button type="submit" class="hs-submit" aria-label="Tìm kiếm">
+                           <span class="hs-submit-label">Tìm kiếm</span>
+                           <svg class="hs-submit-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5" stroke-linecap="round"/></svg>
+                       </button>
+                   </div>
+                   @if ($heroCount)
+                   <p class="hs-count">Hiện có <b>{{ number_format($heroCount, 0, ',', '.') }}</b> căn đang xác thực</p>
+                   @endif
+                   @if (count($heroHints))
+                   <div class="hs-hints">
+                       <span>Gợi ý:</span>
+                       @foreach ($heroHints as $hint)
+                       @if ($hint['link'] !== '')
+                       <a class="hs-chip" href="{{ $hint['link'] }}">{{ $hint['text'] }} <span aria-hidden="true">☆</span></a>
+                       @else
+                       <button type="button" class="hs-chip" data-keyword="{{ $hint['text'] }}">{{ $hint['text'] }} <span aria-hidden="true">☆</span></button>
+                       @endif
+                       @endforeach
+                   </div>
+                   @endif
                </form>
+               <script>
+               (function () {
+                   var form = document.querySelector('.hero .hero-search');
+                   if (!form) return;
+                   var cate = form.querySelector('[name="cate"]');
+                   var keyword = form.querySelector('[name="keyword"]');
+                   form.querySelectorAll('.hs-tab').forEach(function (tab) {
+                       tab.addEventListener('click', function () {
+                           form.querySelectorAll('.hs-tab').forEach(function (item) {
+                               var on = item === tab;
+                               item.classList.toggle('is-on', on);
+                               item.setAttribute('aria-selected', on ? 'true' : 'false');
+                           });
+                           cate.value = tab.getAttribute('data-cate') || '';
+                       });
+                   });
+                   form.querySelectorAll('button.hs-chip').forEach(function (chip) {
+                       chip.addEventListener('click', function () {
+                           keyword.value = chip.getAttribute('data-keyword') || '';
+                           if (typeof form.requestSubmit === 'function') form.requestSubmit();
+                           else form.submit();
+                       });
+                   });
+               })();
+               </script>
                {{-- <div class="hero-stats">
                    <div class="st">
                        <div class="v">43,91<small> ha</small></div>
@@ -166,8 +241,63 @@
        </div>
    </section>
    @endif
+   <!-- ===================== DỮ LIỆU MỚI NHẤT THEO DANH MỤC ===================== -->
+   @php
+       $latestByCategory = collect($categoryhome ?? [])->map(function ($cate) {
+           $products = \App\models\product\Product::query()
+               ->where('category', $cate->id)
+               ->where('status', 1)
+               ->where('consignment', 0)
+               ->orderByDesc('updated_at')
+               ->orderByDesc('id')
+               ->limit(4)
+               ->get(['id', 'category', 'name', 'discount', 'price', 'images', 'slug', 'cate_slug', 'type_slug', 'size', 'origin', 'status_variant', 'view_count']);
 
-   <!-- ===================== SUPPORT CTA ===================== -->
+           return (object) [
+               'name' => languageName($cate->name),
+               'slug' => $cate->slug,
+               'url' => route('allListProCate', ['danhmuc' => $cate->slug]),
+               'products' => $products,
+           ];
+       })->filter(function ($row) {
+           return $row->products->isNotEmpty();
+       })->values();
+   @endphp
+   @if ($latestByCategory->isNotEmpty())
+   <section class="hp-section latest-board" id="du-lieu-moi">
+       <div class="hp-wrap">
+           @foreach ($latestByCategory as $latestCate)
+           <div class="bed-block">
+               <div class="bed-head">
+                   <div class="bh-l">
+                       <h3>{{ $latestCate->name }} mới nhất</h3>
+                       <span class="count">{{ $latestCate->products->count() }} căn mới</span>
+                   </div>
+                   <div class="bh-r">
+                       <a class="link-more" href="{{ $latestCate->url }}">Xem tất cả <span class="arr">&rarr;</span></a>
+                   </div>
+               </div>
+               <div class="bvl-wrap bvl-grid">
+                   <div class="bvl-grid-sec">
+                       <div class="bvl-grid-inner">
+                           <div class="bvl-card-grid">
+                               @foreach ($latestCate->products as $latestProduct)
+                               @include('layouts.product.item', [
+                                   'pro' => $latestProduct,
+                                   'listingCard' => true,
+                                   'cateFallback' => $latestCate->slug,
+                               ])
+                               @endforeach
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           @endforeach
+       </div>
+   </section>
+   @endif
+   {{-- <!-- ===================== SUPPORT CTA ===================== -->
    <section class="hp-section support" id="lien-he">
        <div class="hp-wrap">
            <div class="support-card reveal">
@@ -781,7 +911,28 @@
                </div>
            </div>
        </div>
-   </section>
-
+   </section> --}}
+@php $introVideoId = youtubeVideoId($setting->fax ?? ''); @endphp
+@if ($introVideoId)
+<section class="hp-section hp-intro-video" id="video-gioi-thieu">
+    <div class="hp-wrap">
+        <div class="section-head">
+            <div class="eyebrow"><span class="dash"></span>Video giới thiệu</div>
+            <h2>Giới thiệu dự án</h2>
+            <div class="rule"></div>
+        </div>
+        <div class="hp-yt">
+            <iframe
+                src="https://www.youtube.com/embed/{{ $introVideoId }}?rel=0"
+                title="Video giới thiệu"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+            ></iframe>
+        </div>
+    </div>
+</section>
+@endif
 </div><!-- /.bvh-hp -->
 @endsection

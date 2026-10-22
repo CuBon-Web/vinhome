@@ -1,0 +1,116 @@
+.bvh-call {
+    position: fixed;
+    right: 18px;
+    bottom: 22px;
+    z-index: 80;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    font-family: "Be Vietnam Pro", system-ui, sans-serif;
+}
+
+.bvh-call__btn {
+    position: relative;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(28, 26, 22, .22);
+}
+
+.bvh-call__btn svg {
+    width: 26px;
+    height: 26px;
+    fill: currentColor;
+    position: relative;
+    z-index: 1;
+}
+
+.bvh-call__mark {
+    position: relative;
+    z-index: 1;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    line-height: 1;
+}
+
+.bvh-call__btn--zalo { background: #0068ff; }
+.bvh-call__btn--hotline {
+    width: 64px;
+    height: 64px;
+    background: #ed3235;
+    animation: bvh-call-bob 2.6s ease-in-out infinite;
+}
+.bvh-call__btn--facebook { background: #1877f2; }
+
+.bvh-call__ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    opacity: .7;
+    animation: bvh-call-pulse 1.8s ease-out infinite;
+    pointer-events: none;
+}
+
+.bvh-call__ring--late { animation-delay: .7s; }
+
+.bvh-call__label {
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translate(8px, -50%);
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: #1c1a16;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+.bvh-call__btn:hover .bvh-call__label,
+.bvh-call__btn:focus-visible .bvh-call__label {
+    opacity: 1;
+    transform: translate(0, -50%);
+}
+
+.bvh-call__btn:hover {
+    filter: brightness(1.06);
+}
+
+body.bvh-menu-open .bvh-call { visibility: hidden; }
+
+@keyframes bvh-call-pulse {
+    0% { transform: scale(1); opacity: .65; }
+    100% { transform: scale(1.75); opacity: 0; }
+}
+
+@keyframes bvh-call-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@media (max-width: 640px) {
+    .bvh-call {
+        right: 12px;
+        bottom: 14px;
+        gap: 10px;
+    }
+    .bvh-call__btn { width: 48px; height: 48px; }
+    .bvh-call__btn--hotline { width: 56px; height: 56px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bvh-call__btn--hotline,
+    .bvh-call__ring { animation: none; }
+}

@@ -110,97 +110,82 @@
 <script type="application/ld+json">{!! json_encode(['@context' => 'https://schema.org', '@graph' => $schemaGraph], $jsonFlags) !!}</script>
 @endsection
 @section('css')
-<link rel="stylesheet" href="{{url('frontend/css/breadcrumb_style.scss.css')}}">
-<link rel="stylesheet" href="{{url('frontend/css/paginate.scss.css')}}">
-<link rel="stylesheet" href="{{url('frontend/css/blog_article_style.scss.css')}}">
+<link rel="stylesheet" href="/frontend/css/blog-list.css?v={{ filemtime(public_path('frontend/css/blog-list.css')) }}">
 @endsection
 @section('js')
 
 @endsection
 @section('content')
-<div class="bodywrap">
-
-  <section class="bread-crumb">
-    <div class="container">
-      <ul class="breadcrumb">					
-        <li class="home">
-          <a href="/"><span>Trang chủ</span></a>						
-          <span class="mr_lr">&nbsp;<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-chevron-right fa-w-10"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" class=""></path></svg>&nbsp;</span>
-        </li>
-        
-        
-        <li><strong><span>Tin tức</span></strong></li>
-        
-        
-      </ul>
-    </div>
-  </section>
-<div class="blog_wrapper layout-blog" itemscope itemtype="https://schema.org/Blog">
-  <meta itemprop="name" content="{{$title_page}}">
-  <meta itemprop="description" content="{{$title_page}}">
-  <div class="container">
-    <h1 class="title-page d-none">
-        <span>{{$title_page}}</span>
-    </h1>
-    <div class="row">
-        <div class="right-content col-lg-9 col-12">
-          <div class="list-blogs">
-              <div class="row row-fix">
-                @foreach ($blog as $item)
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-fix">
-                  <div class="item-blog">
-                    <div class="block-thumb">
-                        <a class="thumb" href="{{route('detailBlog',['slug'=>$item->slug])}}" title="{{languageName($item->title)}}">
-                        <img width="600" height="380" class="lazyload" src="{{url('frontend/images/lazy.png')}}" data-src="{{url($item->image)}}"  alt="{{languageName($item->title)}}">
-                        </a>
-                    </div>
-                    <div class="day_time">
-                        <span class="day_item">{{date_format($item->created_at,'d')}}</span>
-                        <span class="myear_item">{{date_format($item->created_at,'m/Y')}}</span>
-                    </div>
-                    <div class="block-content">
-                        <h3><a href="{{route('detailBlog',['slug'=>$item->slug])}}" title="{{languageName($item->title)}}">{{languageName($item->title)}}</a></h3>
-                        <p class="justify">{!!languageName($item->description)!!}</p>
-                    </div>
-                  </div>
-              </div>
-                @endforeach
-                
-              </div>
-              <div class="text-center">
-                <nav class="clearfix relative nav_pagi w_100 ">
-                    {{$blog->links()}}
-                </nav>
-              </div>
-          </div>
+<div class="bvh-blog">
+    <div class="bvh-blog-wrap">
+        <ul class="bvh-blog-crumb">
+            <li><a href="{{ route('home') }}">Trang chủ</a></li>
+            <li>{{ $title_page }}</li>
+        </ul>
+        <div class="bvh-blog-head">
+            <div>
+                <div class="bvh-blog-eyebrow"><span></span>Tin tức</div>
+                <h1>{{ $title_page }}</h1>
+            </div>
+            <span class="bvh-blog-count">{{ $blog->total() }} bài viết</span>
         </div>
-        <div class="blog_left_base col-lg-3 col-12">
-          <div class="aside-blog-right">
-              <div class="blog_noibat">
-                <h2 class="h2_sidebar_blog">
-                    <a href="" title="Bài viết mới">Bài viết mới</a>
-                </h2>
-                <div class="blog_content">
-                    @foreach ($blognew as $item)
-                    <div class="item clearfix">
 
-                      <div class="post-thumb">
-                          <a class="image-blog scale_hover" href="{{route('detailBlog',['slug'=>$item->slug])}}" title="{{languageName($item->title)}}">
-                          <img width="600" height="380" class="img_blog lazyload" src="{{url('frontend/images/lazy.png')}}" data-src="{{url($item->image)}}"  alt="{{languageName($item->title)}}">
-                          </a>
-                      </div>
-                      <div class="contentright">
-                          <h3><a title="{{languageName($item->title)}}" href="{{route('detailBlog',['slug'=>$item->slug])}}">{{languageName($item->title)}}</a></h3>
-                      </div>
-                    </div>
+        <div class="bvh-blog-layout">
+            <div>
+                @if ($blog->count())
+                <div class="bvh-blog-grid">
+                    @foreach ($blog as $item)
+                    @php
+                        $postTitle = languageName($item->title);
+                        $postExcerpt = trim(preg_replace('/\s+/u', ' ', strip_tags(html_entity_decode(languageName($item->description), ENT_QUOTES, 'UTF-8'))));
+                    @endphp
+                    <article class="bvh-blog-card">
+                        <a class="bvh-blog-media" href="{{ route('detailBlog', ['slug' => $item->slug]) }}">
+                            @if (!empty($item->image))
+                            <img src="{{ url($item->image) }}" alt="{{ $postTitle }}" loading="lazy">
+                            @endif
+                        </a>
+                        <div class="bvh-blog-body">
+                            <time datetime="{{ optional($item->created_at)->toDateString() }}">{{ date_format($item->created_at, 'd/m/Y') }}</time>
+                            <h2><a href="{{ route('detailBlog', ['slug' => $item->slug]) }}">{{ $postTitle }}</a></h2>
+                            @if ($postExcerpt !== '')
+                            <p>{{ \Illuminate\Support\Str::limit($postExcerpt, 140) }}</p>
+                            @endif
+                        </div>
+                    </article>
                     @endforeach
                 </div>
-              </div>
-              <div class="clearfix clear-fix"></div>
-          </div>
+                @else
+                <p class="bvh-blog-empty">Chưa có bài viết trong mục này.</p>
+                @endif
+
+                @if ($blog->hasPages())
+                <nav class="bvh-blog-pager" aria-label="Phân trang bài viết">
+                    {{ $blog->links() }}
+                </nav>
+                @endif
+            </div>
+
+            @if (isset($blognew) && count($blognew))
+            <aside class="bvh-blog-side">
+                <h2>Bài viết mới</h2>
+                @foreach ($blognew as $item)
+                @php $sideTitle = languageName($item->title); @endphp
+                <a class="bvh-blog-mini" href="{{ route('detailBlog', ['slug' => $item->slug]) }}">
+                    <span class="bvh-blog-mini-img">
+                        @if (!empty($item->image))
+                        <img src="{{ url($item->image) }}" alt="" loading="lazy">
+                        @endif
+                    </span>
+                    <span>
+                        <time>{{ date_format($item->created_at, 'd/m/Y') }}</time>
+                        <strong>{{ $sideTitle }}</strong>
+                    </span>
+                </a>
+                @endforeach
+            </aside>
+            @endif
         </div>
     </div>
-  </div>
-</div>
 </div>
 @endsection

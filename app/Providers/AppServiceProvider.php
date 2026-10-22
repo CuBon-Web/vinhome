@@ -80,6 +80,7 @@ class AppServiceProvider extends ServiceProvider
                 'status_variant',
                 'discountStatus',
                 'home_status',
+                'view_count',
             ];
             $typeProducts = collect();
             foreach ($categories as $category) {

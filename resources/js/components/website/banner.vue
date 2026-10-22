@@ -91,22 +91,49 @@
                   </div>
                   <div class="form-group">
                     <label>Mô tả</label>
-                    <TinyMce
+                    <vs-input
+                      type="text"
                       v-model="item.description"
                       size="default"
-                      placeholder="Mô tả banner"
+                      placeholder="Tiêu đề banner"
                       class="w-100"
                     />
                   </div>
                   <div class="form-group">
-                    <label>Link nút CTA</label>
-                    <vs-input
-                      type="text"
-                      v-model="item.link"
-                      size="default"
-                      placeholder="Link banner"
-                      class="w-100"
-                    />
+                    <label>Từ khóa gợi ý</label>
+                    <div
+                      class="banner-hint-row"
+                      v-for="(hint, hintIndex) in item.hints"
+                      :key="'hint-' + key + '-' + hintIndex"
+                    >
+                      <vs-input
+                        type="text"
+                        v-model="hint.text"
+                        size="default"
+                        placeholder="Từ khóa"
+                        class="w-100"
+                      />
+                      <vs-input
+                        type="text"
+                        v-model="hint.link"
+                        size="default"
+                        placeholder="Link"
+                        class="w-100"
+                      />
+                      <label
+                        class="banner-hint-remove"
+                        title="Xóa gợi ý"
+                        @click="removeHint(item, hintIndex)"
+                      >
+                        <vs-icon icon="clear"></vs-icon>
+                      </label>
+                    </div>
+                    <vs-button
+                      color="primary"
+                      type="border"
+                      size="small"
+                      @click="addHint(item)"
+                    >Thêm gợi ý</vs-button>
                   </div>
                   <div class="form-group">
                     <label>Trạng thái</label>
@@ -133,12 +160,48 @@
 <script>
 import { mapActions } from "vuex";
 import TinyMce from "../_common/tinymce";
+const defaultHint = () => ({
+  text: "",
+  link: "",
+});
+
+const parseHints = (link) => {
+  if (Array.isArray(link)) {
+    const rows = link
+      .filter((row) => row && typeof row === "object")
+      .map((row) => ({
+        text: row.text || "",
+        link: row.link || "",
+      }));
+    return rows.length ? rows : [defaultHint()];
+  }
+
+  if (typeof link === "string") {
+    const trimmed = link.trim();
+    if (trimmed.startsWith("[")) {
+      try {
+        const parsed = JSON.parse(trimmed);
+        if (Array.isArray(parsed)) {
+          return parseHints(parsed);
+        }
+      } catch (e) {
+        return [defaultHint()];
+      }
+    }
+    if (trimmed !== "") {
+      return [{ text: "", link: trimmed }];
+    }
+  }
+
+  return [defaultHint()];
+};
+
 const defaultBanner = () => ({
   image: "",
   type: "image",
   video_url: "",
   status: 1,
-  link: "",
+  hints: [defaultHint()],
   title: "",
   description: "",
 });
@@ -161,10 +224,39 @@ export default {
         ...item,
         type: item.type === "youtube" ? "youtube" : "image",
         video_url: item.video_url || "",
+        hints: parseHints(item.hints || item.link),
         status: String(
           item.status !== undefined && item.status !== null ? item.status : 1
         ),
       };
+    },
+    addHint(item) {
+      if (!Array.isArray(item.hints)) {
+        this.$set(item, "hints", []);
+      }
+      item.hints.push(defaultHint());
+    },
+    removeHint(item, index) {
+      item.hints.splice(index, 1);
+      if (!item.hints.length) {
+        item.hints.push(defaultHint());
+      }
+    },
+    bannerPayload() {
+      return this.objData.map((item) => ({
+        image: item.image,
+        type: item.type,
+        video_url: item.video_url,
+        status: item.status,
+        title: item.title,
+        description: item.description,
+        link: (item.hints || [])
+          .map((hint) => ({
+            text: (hint.text || "").trim(),
+            link: (hint.link || "").trim(),
+          }))
+          .filter((hint) => hint.text !== "" || hint.link !== ""),
+      }));
     },
     youtubePreviewId(item) {
       const url = (item.video_url || "").trim();
@@ -199,7 +291,7 @@ export default {
       if (!this.validateBanners()) return;
 
       this.loadings(true);
-      this.saveBanner({ data: this.objData })
+      this.saveBanner({ data: this.bannerPayload() })
         .then(() => {
           this.loadings(false);
           this.$success("Sửa banner thành công");
@@ -240,5 +332,16 @@ export default {
 <style scoped>
 .banner-item-row {
   margin-bottom: 8px;
+}
+.banner-hint-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.banner-hint-remove {
+  flex: none;
+  margin: 0;
+  cursor: pointer;
 }
 </style>

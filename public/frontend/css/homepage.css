@@ -1,5 +1,5 @@
 html, body {
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
 }
 
@@ -259,15 +259,28 @@ html, body {
 }
 
 .bvh-hp .hero .eyebrow {
-    margin-bottom: 26px;
+    margin-bottom: 14px;
+}
+
+.bvh-hp .hero-kicker {
+    margin: 0 0 10px;
+    max-width: 680px;
+    color: rgba(255,255,255,.92);
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 500;
+    line-height: 1.45;
 }
 
 .bvh-hp .hero h1 {
-    font-size: clamp(40px, 6.6vw, 88px);
-    font-weight: 800;
-    line-height: 1.06;
-    letter-spacing: -0.03em;
-    text-wrap: balance;
+    font-size: clamp(23px, 4.4vw, 43px);
+    font-weight: 600;
+    /* line-height: 1.15; */
+    /* letter-spacing: -0.03em; */
+    /* text-wrap: balance; */
+    color: #fff;
+    margin: 0 0 22px;
+    /* max-width: 14em; */
+    font-style: italic;
 }
 
 .bvh-hp .hero h1 em {
@@ -1508,5 +1521,37 @@ html, body {
 
     .bvh-hp .fplan-body {
         padding: 22px 20px 20px;
+    }
+}
+
+.bvh-hp .hp-yt {
+    position: relative;
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #14120f;
+    border: 1px solid var(--line);
+    box-shadow: 0 22px 48px rgba(28, 26, 22, .14);
+}
+
+.bvh-hp .hp-yt iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+@media (max-width: 640px) {
+    .bvh-hp .hp-intro-video {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+
+    .bvh-hp .hp-yt {
+        border-radius: 14px;
     }
 }

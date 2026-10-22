@@ -23,13 +23,46 @@ class BannerController extends Controller
                     'status' => $value['status'],
                     'title' => $value['title'] ?? '',
                     'description' => $value['description'] ?? '',
-                    'link' => $value['link'] ?? '',
+                    'link' => $this->encodeHints($value['link'] ?? ''),
                 ]);
 	    	}
     	}
     	return response()->json([
             'messenge' => 'success'
         ],200);
+    }
+
+    private function encodeHints($value)
+    {
+        $items = $value;
+        if (is_string($value)) {
+            $decoded = json_decode($value, true);
+            if (is_array($decoded)) {
+                $items = $decoded;
+            } else {
+                $plain = trim($value);
+                $items = $plain === '' ? [] : [['text' => '', 'link' => $plain]];
+            }
+        }
+
+        if (!is_array($items)) {
+            return json_encode([], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        }
+
+        $clean = [];
+        foreach ($items as $item) {
+            if (!is_array($item)) {
+                continue;
+            }
+            $text = trim((string) ($item['text'] ?? ''));
+            $url = trim((string) ($item['link'] ?? ''));
+            if ($text === '' && $url === '') {
+                continue;
+            }
+            $clean[] = ['text' => $text, 'link' => $url];
+        }
+
+        return json_encode($clean, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
     public function list()
     {

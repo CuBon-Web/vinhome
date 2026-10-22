@@ -33,7 +33,7 @@ class ProductController extends Controller
 
     public function allProduct()
     {
-        $data['list'] = Product::where('status',1)->where('consignment', 0)->orderBy('id','DESC')->select('id','category','name','discount','price','images','slug','cate_slug','type_slug','status_variant','tags','origin','size')
+        $data['list'] = Product::where('status',1)->where('consignment', 0)->orderBy('id','DESC')->select('id','category','name','discount','price','images','slug','cate_slug','type_slug','status_variant','tags','origin','size','view_count')
         ->paginate(12);
         $data['filter'] = TagCate::with(['tags'])->where('status', 1)->get();
         $data['title'] = "Tất cả sản phẩm";
@@ -43,7 +43,7 @@ class ProductController extends Controller
     public function flashSale()  {
         $data['list'] = Product::where(['status'=>1,'discountStatus'=>1,'consignment'=>0])
         ->orderBy('id','DESC')
-        ->select('id','category','name','discount','price','images','slug','cate_slug','type_slug','description','status_variant','discountStatus','home_status')
+        ->select('id','category','name','discount','price','images','slug','cate_slug','type_slug','description','status_variant','discountStatus','home_status','view_count')
         ->paginate(20);
         return view('product.flash_sale',$data);
     }
@@ -51,7 +51,7 @@ class ProductController extends Controller
     {
         $data['list'] = Product::where(['status'=>1,'cate_slug'=>$danhmuc,'consignment'=>0])
         ->orderBy('id','DESC')
-        ->select('id','category','name','discount','price','images','slug','cate_slug','type_slug','description','status_variant','tags','origin','size')
+        ->select('id','category','name','discount','price','images','slug','cate_slug','type_slug','description','status_variant','tags','origin','size','view_count')
         ->paginate(12);
         $data['cateno'] = Category::where('slug',$danhmuc)->first(['id','name','avatar','content','slug']);
         $data['filter'] = TagCate::with(['tags'])->where('cate_product_id',$data['cateno']->id)->get();
@@ -75,7 +75,7 @@ class ProductController extends Controller
 
         $data['list'] = Product::where(['status'=>1,'cate_slug'=>$danhmuc,'type_slug'=>$loaidanhmuc,'consignment'=>0])
             ->orderBy('id','DESC')
-            ->select('id','category','name','discount','price','images','slug','cate_slug','type_slug','description','status_variant','tags','origin','size')
+            ->select('id','category','name','discount','price','images','slug','cate_slug','type_slug','description','status_variant','tags','origin','size','view_count')
             ->paginate(12);
         $data['type'] = TypeProduct::where('slug',$loaidanhmuc)->first(['id','name','cate_id','content','slug']);
         $cate_id = $data['type']->cate_id;
@@ -97,7 +97,7 @@ class ProductController extends Controller
     public function allListTypeTwo($danhmuc,$loaidanhmuc,$thuonghieu){
         $data['list'] = Product::where(['status'=>1,'cate_slug'=>$danhmuc,'type_slug'=>$loaidanhmuc,'type_two_slug'=>$thuonghieu,'consignment'=>0])
             ->orderBy('id','DESC')
-            ->select('id','category','name','discount','price','images','slug','cate_slug','type_slug','description','status_variant','tags','origin','size')
+            ->select('id','category','name','discount','price','images','slug','cate_slug','type_slug','description','status_variant','tags','origin','size','view_count')
             ->paginate(12);
         $data['typetwo'] = TypeProductTwo::where([
             'slug' => $thuonghieu,
@@ -270,7 +270,7 @@ class ProductController extends Controller
             ->where('status',1)
             ->where('consignment', 0)
             ->with(['cate:id,name,slug'])
-            ->select('id','category','name','discount','price','images','slug','cate_slug','type_slug','description','status_variant','tags')
+            ->select('id','category','name','discount','price','images','slug','cate_slug','type_slug','description','status_variant','tags','view_count')
             ->paginate(20);
 
         $itemsHtml = view("layouts.product.filter_grid_items",compact('product'))->render();
@@ -361,7 +361,7 @@ class ProductController extends Controller
             ->where('id', '!=', $data['product']->id)
             ->limit(8)
             ->with(['cate:id,name,slug'])
-            ->get(['id','category','name','status_variant','discount','price','images','slug','cate_slug','type_slug','description']);
+            ->get(['id','category','name','status_variant','discount','price','images','slug','cate_slug','type_slug','description','view_count']);
 
         return view('product.detail',$data);
     }
@@ -574,7 +574,7 @@ class ProductController extends Controller
     private function homeTabAjax($danhmuc, $loaidanhmuc)
     {
         $list = Product::query()
-            ->select('id', 'category', 'name', 'discount', 'price', 'images', 'slug', 'cate_slug', 'type_slug', 'status_variant', 'discountStatus', 'home_status')
+            ->select('id', 'category', 'name', 'discount', 'price', 'images', 'slug', 'cate_slug', 'type_slug', 'status_variant', 'discountStatus', 'home_status', 'view_count')
             ->where('status', 1)
             ->where('home_status', 1)
             ->where('consignment', 0)

@@ -196,7 +196,7 @@ const FLOOR_PANEL_BLOCK = `
 <p>Mặt bằng tầng 22</p>
 </td>
 <td class="fp-floor-panels">
-<details class="fp-acc" open>
+<details class="fp-acc">
 <summary>Căn hộ 01, 02, 08, 09, 10</summary>
 <div class="fp-acc-body">
 <img src="" alt="Layout căn hộ 01, 02, 08, 09, 10" />

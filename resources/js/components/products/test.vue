@@ -356,6 +356,15 @@
                       </vs-select>
                     </div>
                     <div>
+                      <label class="compact-label">Lượt xem</label>
+                      <vs-input
+                        type="number"
+                        class="w-100"
+                        v-model="objData.view_count"
+                        min="0"
+                      />
+                    </div>
+                    <div>
                       <label class="compact-label">Sản phẩm nổi bật</label>
                       <el-radio-group v-model="objData.discountStatus" size="mini" class="compact-radio-group">
                         <el-radio-button :label="1">Có</el-radio-button>
@@ -698,6 +707,7 @@ export default {
         lungtung:[],
         status_variant: 0,
         home_status:0,
+        view_count: 0,
         consignment: 0
       },
       seoData: {
@@ -1558,6 +1568,7 @@ export default {
         .then(([productResponse, skuResponse]) => {
           this.loadings(false);
           this.objData = productResponse.data;
+          this.objData.view_count = Number(productResponse.data.view_count) || 0;
           this.loadSavedTypeOptions();
           this.objData.images = JSON.parse(productResponse.data.images);
           this.objData.preserve = JSON.parse(productResponse.data.preserve);

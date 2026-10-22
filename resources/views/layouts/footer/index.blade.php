@@ -2,7 +2,7 @@
    <div class="bvh-footer__wrap">
        <div class="bvh-footer__main">
            <div class="bvh-footer__brand">
-               <a class="bvh-footer__wordmark" href="">Bestvinhomes<span class="bvh-footer__dot">.</span></a>
+               <a class="bvh-footer__wordmark" href=""><img width="200" src="{{$setting->logo}}" alt=""></a>
                <p class="bvh-footer__about">{{$setting->webname}}</p>
            </div>
            <div class="bvh-footer__vline"></div>
@@ -19,6 +19,31 @@
                        </svg>
                        {{$setting->address1}} </span>
                </div>
+               @php
+                   $fbPage = trim((string) ($setting->facebook ?? ''));
+                   if ($fbPage !== '' && !preg_match('#^https?://#i', $fbPage)) {
+                       $fbPage = 'https://' . ltrim($fbPage, '/');
+                   }
+               @endphp
+               @if ($fbPage !== '')
+               <div class="bvh-footer__fb">
+                   <div class="fb-page"
+                       data-href="{{ $fbPage }}"
+                       data-tabs=""
+                       data-width="340"
+                       data-hide-cover="true"
+                       data-show-facepile="false"
+                       data-small-header="false"
+                       data-adapt-container-width="true"
+                       data-lazy="false">
+                       <blockquote cite="{{ $fbPage }}" class="fb-xfbml-parse-ignore">
+                           <a href="{{ $fbPage }}" target="_blank" rel="noopener">Facebook</a>
+                       </blockquote>
+                   </div>
+               </div>
+               <div id="fb-root"></div>
+               <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v21.0"></script>
+               @endif
            </div>
        </div>
        <div class="bvh-footer__bottom">© {{ date('Y') }}. Giỏ hàng cập nhật mỗi ngày.</div>

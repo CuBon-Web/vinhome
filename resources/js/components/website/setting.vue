@@ -60,13 +60,22 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label>Link video giới thiệu</label>
+                  <label>Link video giới thiệu</label>
                   <vs-input
                     type="text"
                     size="default"
                     class="w-100"
                     v-model="objData.fax"
+                    placeholder="https://www.youtube.com/watch?v=... hoặc mã video"
                   />
+                  <div class="intro-video-preview" v-if="introVideoId">
+                    <iframe
+                      :src="'https://www.youtube.com/embed/' + introVideoId + '?rel=0'"
+                      title="Xem trước video giới thiệu"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen
+                    ></iframe>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label>Email</label>
@@ -93,15 +102,6 @@
                     size="default"
                     class="w-100"
                     v-model="objData.google"
-                  />
-                </div>
-                <div class="form-group">
-                  <label>Instagram</label>
-                  <vs-input
-                    type="text"
-                    size="default"
-                    class="w-100"
-                    v-model="objData.fbPixel"
                   />
                 </div>
                 <div class="form-group">
@@ -205,7 +205,19 @@ export default {
   components: {
     TinyMce
   },
-  computed: {},
+  computed: {
+    introVideoId() {
+      const url = (this.objData.fax || "").trim();
+      if (!url) return "";
+      if (/^[a-zA-Z0-9_-]{11}$/.test(url)) return url;
+      const match = url.match(
+        /(?:youtube\.com|youtube-nocookie\.com|youtu\.be)\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/|v\/)?([a-zA-Z0-9_-]{11})/
+      );
+      if (match) return match[1];
+      const query = url.match(/[?&]v=([a-zA-Z0-9_-]{11})/);
+      return query ? query[1] : "";
+    },
+  },
   watch: {},
   methods: {
     ...mapActions(["postSetting", "loadings","getSetting"]),
@@ -240,3 +252,23 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.intro-video-preview {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 12px;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #111;
+}
+.intro-video-preview iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+</style>

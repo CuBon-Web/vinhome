@@ -92,8 +92,7 @@ const FP_COLUMN_STYLE = `
   table.fp-layout, table.fp-overview, table.fp-cols, table.fp-floor { width: 100%; border-collapse: collapse; margin: 10px 0; }
   table.fp-layout td, table.fp-overview td, table.fp-cols td, table.fp-floor td { width: 50%; vertical-align: top; border: 1px dashed #d9cbb3; padding: 10px; }
   table.fp-layout img, table.fp-overview img, table.fp-cols img, table.fp-floor img { max-width: 100%; height: auto; }
-  table.fp-floor td.fp-floor-media { width: 58%; }
-  table.fp-floor td.fp-floor-panels { width: 42%; }
+  table.fp-floor td.fp-floor-media, table.fp-floor td.fp-floor-panels { width: 50%; }
   .fp-acc { border: 1px solid #e7e1d8; border-radius: 10px; margin: 0 0 10px; background: #fff; overflow: hidden; }
   .fp-acc summary { list-style: none; cursor: pointer; padding: 12px 40px 12px 14px; position: relative; font-weight: 600; font-size: 14px; color: #1c1a16; }
   .fp-acc summary::-webkit-details-marker { display: none; }
@@ -144,7 +143,7 @@ export default {
         ],
         toolbar1:
           "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-        toolbar2: "print preview media | forecolor backcolor emoticons" + (this.insertMenus.length ? " | fpcolumns" : ""),
+        toolbar2: "print preview media | forecolor backcolor emoticons" + (this.insertMenus.length ? " | fpcolumns | fpaddacc fpremoveacc" : ""),
         content_style: this.insertMenus.length ? FP_COLUMN_STYLE : "",
         extended_valid_elements: "details[class|open],summary,div[class|style]",
         valid_children: "+body[style],+td[details|div|summary],+details[summary|div|#text]",
@@ -166,6 +165,16 @@ export default {
           editor.on("redo", syncContent);
           if (this.insertMenus.length) {
             const menus = this.insertMenus;
+            const floorAccordionHtml = () =>
+              '<details class="fp-acc"><summary>Căn hộ mới</summary><div class="fp-acc-body"><img src="" alt="" /><p>Chú thích layout</p></div></details>';
+            const floorPanelsCell = () => {
+              const node = editor.selection.getNode();
+              return editor.dom.getParent(node, "td.fp-floor-panels")
+                || (editor.dom.getParent(node, "table.fp-floor") || { querySelector: () => null }).querySelector("td.fp-floor-panels");
+            };
+            const warnFloor = (text) => {
+              editor.notificationManager.open({ text, type: "warning", timeout: 2500 });
+            };
             editor.ui.registry.addMenuButton("fpcolumns", {
               text: "2 cột",
               tooltip: "Chèn layout 2 cột tại vị trí con trỏ",
@@ -179,6 +188,59 @@ export default {
                   },
                 })));
               },
+            });
+            editor.ui.registry.addButton("fpaddacc", {
+              text: "Thêm dropdown",
+              tooltip: "Thêm một mục trong cột dropdown của mặt bằng tầng",
+              onAction: () => {
+                const cell = floorPanelsCell();
+                if (!cell) {
+                  warnFloor("Đặt con trỏ trong layout mặt bằng tầng rồi thêm dropdown.");
+                  return;
+                }
+                const current = editor.dom.getParent(editor.selection.getNode(), "details.fp-acc");
+                editor.undoManager.transact(() => {
+                  const holder = editor.dom.create("div", {}, floorAccordionHtml());
+                  const item = holder.firstChild;
+                  if (current && current.parentNode === cell) {
+                    editor.dom.insertAfter(item, current);
+                  } else {
+                    cell.appendChild(item);
+                  }
+                  const summary = item.querySelector("summary");
+                  if (summary) editor.selection.setCursorLocation(summary, 0);
+                });
+                editor.nodeChanged();
+                editor.fire("change");
+              },
+            });
+            editor.ui.registry.addButton("fpremoveacc", {
+              text: "Xóa dropdown",
+              tooltip: "Xóa dropdown đang chọn",
+              onAction: () => {
+                const current = editor.dom.getParent(editor.selection.getNode(), "details.fp-acc");
+                if (!current) {
+                  warnFloor("Đặt con trỏ vào dropdown cần xóa.");
+                  return;
+                }
+                const sibling = (node) => (node && node.matches && node.matches("details.fp-acc") ? node : null);
+                const next = sibling(current.nextElementSibling) || sibling(current.previousElementSibling);
+                editor.undoManager.transact(() => {
+                  editor.dom.remove(current);
+                });
+                if (next && next.querySelector) {
+                  const summary = next.querySelector("summary");
+                  if (summary) editor.selection.setCursorLocation(summary, 0);
+                }
+                editor.nodeChanged();
+                editor.fire("change");
+              },
+            });
+            editor.ui.registry.addContextToolbar("fpfloortools", {
+              predicate: (node) => !!editor.dom.getParent(node, "table.fp-floor"),
+              items: "fpaddacc fpremoveacc",
+              position: "selection",
+              scope: "node",
             });
           }
         }

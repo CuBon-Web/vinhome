@@ -454,3 +454,23 @@ if (!function_exists('seo_robots_directive')) {
         return 'index, follow';
     }
 }
+if (!function_exists('youtubeVideoId')) {
+    function youtubeVideoId($value)
+    {
+        $value = trim(html_entity_decode(strip_tags((string) $value), ENT_QUOTES, 'UTF-8'));
+        if ($value === '') {
+            return null;
+        }
+        if (preg_match('/^[a-zA-Z0-9_-]{11}$/', $value)) {
+            return $value;
+        }
+        if (preg_match('~(?:youtube\.com|youtube-nocookie\.com|youtu\.be)/(?:watch\?(?:.*&)?v=|embed/|shorts/|live/|v/)?([a-zA-Z0-9_-]{11})~', $value, $matches)) {
+            return $matches[1];
+        }
+        if (preg_match('~[?&]v=([a-zA-Z0-9_-]{11})~', $value, $matches)) {
+            return $matches[1];
+        }
+
+        return null;
+    }
+}

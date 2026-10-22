@@ -60,7 +60,7 @@ class HomeController extends Controller
         $data['homeProjectSpecs'] = HomeProjectSpec::where('status', 1)->orderBy('sort')->orderBy('id')->get();
         $data['gallery'] = AlbumAffter::where('status', 1)->orderBy('sort')->orderBy('id')->get();
         $data['homePro'] = Product::where(['status'=>1,'discountStatus'=>1,'consignment'=>0])
-            ->select('id','category','name','discount','price','images','slug','cate_slug','type_slug','description','status_variant','discountStatus','home_status')
+            ->select('id','category','name','discount','price','images','slug','cate_slug','type_slug','description','status_variant','discountStatus','home_status','view_count')
             ->with(['cate:id,slug,name'])
             ->inRandomOrder()->limit(18)->get();
         $this->attachVariantPriceRange($data['homePro']);

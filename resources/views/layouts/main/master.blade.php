@@ -63,12 +63,13 @@
       <link rel="icon" href="img/favicon.png" sizes="32x32">
     <link rel="stylesheet" href="/frontend/css/fonts.css">
     <link rel="stylesheet" href="/frontend/css/style.css">
-    <link rel="stylesheet" href="/frontend/css/header.css">
-    <link rel="stylesheet" href="/frontend/css/footer.css">
-    <link rel="stylesheet" href="/frontend/css/homepage.css">
+    <link rel="stylesheet" href="/frontend/css/header.css?v={{ filemtime(public_path('frontend/css/header.css')) }}">
+    <link rel="stylesheet" href="/frontend/css/footer.css?v={{ filemtime(public_path('frontend/css/footer.css')) }}">
+    <link rel="stylesheet" href="/frontend/css/homepage.css?v={{ filemtime(public_path('frontend/css/homepage.css')) }}">
     <link rel="stylesheet" href="/frontend/css/design-system.css">
-    <link rel="stylesheet" href="/frontend/css/grid.css">
-    <link rel="stylesheet" href="/frontend/css/extra.css">
+    <link rel="stylesheet" href="/frontend/css/grid.css?v={{ filemtime(public_path('frontend/css/grid.css')) }}">
+    <link rel="stylesheet" href="/frontend/css/extra.css?v={{ filemtime(public_path('frontend/css/extra.css')) }}">
+    <link rel="stylesheet" href="/frontend/css/callbutton.css?v={{ filemtime(public_path('frontend/css/callbutton.css')) }}">
     <link rel="stylesheet" href="/frontend/googletranslate/google-translate-lang.css">
       @yield('css')
    </head>
@@ -83,6 +84,7 @@
      </div>
  
     @include('layouts.footer.index')
+    @include('partials.site-call')
       <div id="google_translate_element" class="notranslate" aria-hidden="true"></div>
       <script src="/frontend/js/header.js"></script>
       <script src="/frontend/js/homepage.js"></script>

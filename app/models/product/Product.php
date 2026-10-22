@@ -87,6 +87,7 @@ class Product extends Model
                     $query->status = $request->status;
                     $query->discountStatus = $request->discountStatus;
                     $query->home_status = $request->home_status;
+                    $query->view_count = max(0, (int) $request->input('view_count', 0));
                     $query->consignment = $request->input('consignment') ? 1 : 0;
                     $query->cate_build_pc = $request->cate_build_pc;
                     $query->service_id = $request->service_id;
@@ -139,6 +140,7 @@ class Product extends Model
                 $query->status = $request->status;
                 $query->discountStatus = $request->discountStatus;
                 $query->home_status = $request->home_status;
+                $query->view_count = max(0, (int) $request->input('view_count', 0));
                 $query->consignment = $request->input('consignment') ? 1 : 0;
                 $query->service_id = $request->service_id;
                 $query->save();

@@ -76,7 +76,15 @@
             <div class="bvl-lcard-price">
                 <b>{{ $priceNum }}</b><small>{{ $priceUnit }}</small>
             </div>
-            <span class="bvl-lcard-fav" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.4S4.4 15.5 2.6 11.6C1.1 8.4 2.4 5.2 5.6 4.5c1.8-.4 3.7.4 4.8 1.9 1.1-1.5 3-2.3 4.8-1.9 3.2.7 4.5 3.9 3 7.1-1.8 3.9-9.4 8.8-9.4 8.8z"/></svg></span>
+            <div class="bvl-lcard-meta">
+                <span class="bvl-lcard-views" title="Lượt xem">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                    {{ number_format((int) ($pro->view_count ?? 0), 0, ',', '.') }}
+                </span>
+                <span class="bvl-lcard-fav" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.4S4.4 15.5 2.6 11.6C1.1 8.4 2.4 5.2 5.6 4.5c1.8-.4 3.7.4 4.8 1.9 1.1-1.5 3-2.3 4.8-1.9 3.2.7 4.5 3.9 3 7.1-1.8 3.9-9.4 8.8-9.4 8.8z"/></svg>
+                </span>
+            </div>
         </div>
         <h4><a href="{{ $productUrl }}">{{ $productName }}</a></h4>
         @if ($address !== '')
